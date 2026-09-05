@@ -12,8 +12,7 @@
         "campus_life": 1.0
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "quick_skimmer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -31,8 +30,7 @@
         "campus_life": 0.7
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "deep_reader": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -50,8 +48,7 @@
         "news_literacy": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -68,8 +65,7 @@
         "trend": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -103,8 +99,7 @@
         "club": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "casual": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -139,8 +134,7 @@
         "campus_life": 1.0
       },
       "traits": {
-        "casual": 1.0,
-        "comparer": 0.7
+        "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -157,8 +151,7 @@
         "campus_life": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "professional": 0.4
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -175,8 +168,7 @@
         "club": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "casual": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
@@ -194,7 +186,6 @@
         "campus_notice": 0.7
       },
       "traits": {
-        "deep_reader": 0.7,
         "conservative": 1.0
       },
       "cover_type": "css_gradient",
@@ -252,6 +243,44 @@
       "cover_type": "css_gradient",
       "cover_theme": "social",
       "is_probe": false
+    },
+    {
+      "content_id": "H15",
+      "title": "志愿活动怎么选：认定一个就去",
+      "summary": "别在几十个群里比价志愿时长，选准一个方向扎下去。",
+      "body": "志愿信息群加了一打，活动挑花了眼，最后哪个都没去——志愿这件事，最忌攒时长心态。选活动只看两条：一是方向你是否真的在意，支教助学、社区服务、赛会保障，偏好哪个去哪个，今年西部计划招募六万人，九成岗位在基层，长期项目更有沉淀；二是时间能否可持续，与其每月赶三次凑数，不如固定两周去一次。选定之后别再比来比去，坚持一学期，收获的熟人和技能，比时长数字值钱。",
+      "body_len": "S",
+      "domain": "social_hot",
+      "sub_tags": {
+        "volunteer": 1.0,
+        "campus_life": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "social",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "H16",
+      "title": "一条校园热点话题的二十四小时",
+      "summary": "从宿舍群到全校热榜，一条消息的传播路径，值得看懂一次。",
+      "body": "早上八点，一张模糊的截图出现在三个年级群里：某食堂窗口要撤了。九点，有人补上细节和现场照片，转发开始加速。十点，几个大群里出现两个版本，细节互相矛盾，但情绪都是惋惜。中午，校园墙把它顶上热榜，评论区吵成两派，一派惋惜，一派说别乱带节奏。下午三点，后勤部门发声：是搬迁不是撤销，新窗口下月开张。晚上，热榜还在，只是已经没人关心真相了。\n\n这条时间线里值得注意的不是结果，是每个节点的角色：发起者提供情绪，转发者贡献速度，二创者贡献流量，辟谣者总是姗姗来迟。传播研究里有个稳定的结论：情绪跑得比事实快得多，而更正消息的到达率，只有原消息的两成。\n\n看懂这条链路，你会明白两件事。第一，让你按下转发的往往是情绪而不是事实，手指停三秒，先等一个信源。第二，看到全网都在说的时候，恰恰是离事实最远的时候。媒介素养不是少上网，是上网的时候知道自己站在哪里。",
+      "body_len": "L",
+      "domain": "social_hot",
+      "sub_tags": {
+        "trend": 1.0,
+        "news_literacy": 0.7
+      },
+      "traits": {
+        "professional": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "social",
+      "is_probe": false,
+      "review_status": "pending"
     }
   ],
   "probes": [

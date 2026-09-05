@@ -1,11 +1,11 @@
 {
   "version": 1,
   "kind": "contents_seed",
-  "generated_at": "2026-09-04T21:16:07",
+  "generated_at": "2026-09-05T21:26:15",
   "counts": {
-    "interest": 103,
+    "interest": 118,
     "probes": 16,
-    "total": 119
+    "total": 134
   },
   "contents": [
     {
@@ -21,12 +21,11 @@
         "hardware": 0.4
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "comparer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -45,12 +44,11 @@
         "hardware": 0.7
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "professional": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -69,12 +67,11 @@
         "devops": 0.7
       },
       "traits": {
-        "deep_reader": 0.7,
         "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -92,12 +89,11 @@
         "hardware": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -115,12 +111,11 @@
         "programming": 1.0
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 1.0
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -161,12 +156,11 @@
         "hardware": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "price_sensitive": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -185,12 +179,11 @@
         "programming": 0.7
       },
       "traits": {
-        "professional": 1.0,
-        "decisive": 0.7
+        "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -231,12 +224,11 @@
         "hardware": 0.4
       },
       "traits": {
-        "comparer": 1.0,
-        "premium_oriented": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -255,12 +247,11 @@
         "gadget": 1.0
       },
       "traits": {
-        "early_adopter": 0.7,
         "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -278,12 +269,11 @@
         "mobile": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -301,8 +291,53 @@
         "programming": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "professional": 0.7
+        "quick_skimmer": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "purity": 0.5,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "T14",
+      "title": "宿舍服务器半夜挂了：先回滚，再排查",
+      "summary": "线上出问题，第一反应决定损失大小。回滚不是逃避，是最快的止血。",
+      "body": "凌晨一点，服务挂了，群里全在@你。这时候最忌讳的就是当场修：改一行、重启一次、再看一眼，折腾半小时没好，损失还在扩大。正确顺序是先止血再找病根：回滚到上一个能跑的版本，五分钟恢复服务；用户睡得香，你也睡得着。排查留给白天：日志、监控、改动记录，一条条对。记住，线上环境里，快和稳永远排在聪明前面。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "domain_cn": "科技数码",
+      "sub_tags": {
+        "devops": 1.0,
+        "programming": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "T15",
+      "title": "装机别纠结：两套配置单直接抄",
+      "summary": "预算四千和六千各一套，兼容性都排过雷，照着买不踩坑。",
+      "body": "装机最难的不是动手，是选件：处理器和主板要配套，内存频率看板子，电源别省，机箱看风道。自己查一晚上资料，不如直接抄作业。预算四千：主流六核加上一张二手显卡，写代码和轻度游戏都够用。预算六千：内存和固态翻倍，毕业前不用折腾第二次。清单都是验证过兼容性的，买齐了一下午装完。装机是手段，用起来顺手才是目的。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "domain_cn": "科技数码",
+      "sub_tags": {
+        "hardware": 1.0,
+        "gadget": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -325,12 +360,11 @@
         "pc_game": 0.7
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "early_adopter": 0.4
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -370,12 +404,11 @@
         "anime": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "quick_skimmer": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -394,12 +427,11 @@
         "esports": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 1.0
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -439,12 +471,11 @@
         "anime": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "deep_reader": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -462,12 +493,11 @@
         "mobile_game": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "price_sensitive": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -485,12 +515,11 @@
         "pc_game": 1.0
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "comparer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -530,12 +559,11 @@
         "anime": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -554,12 +582,11 @@
         "hardware": 0.7
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "professional": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "game",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -611,6 +638,75 @@
       "reviewed_at": ""
     },
     {
+      "content_id": "G14",
+      "title": "游戏外设玄学：普通玩家够用就行",
+      "summary": "三百的鼠标和八十的鼠标，差距没有宣传里那么大。",
+      "body": "外设测评看多了，容易觉得不换装备就上不了分。实际上对大多数玩家来说，手感和习惯远比参数重要：八十块的鼠标用顺了，照样稳；键盘只要不卡键、轴体手感你喜欢，就够用。真正影响水平的是练度和心态，不是装备。预算有限就先升级最影响手感的那一件，比如鼠标或耳机，其他等坏了再说。把钱花在刀刃上，游戏才玩得轻松。",
+      "body_len": "S",
+      "domain": "game_acg",
+      "domain_cn": "游戏动漫",
+      "sub_tags": {
+        "hardware": 1.0,
+        "pc_game": 0.4
+      },
+      "traits": {
+        "casual": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "game",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "G15",
+      "title": "独立游戏的机制创新，大胆在哪",
+      "summary": "没有美术预算，就把玩法打磨到极致——这是独立游戏的生存法则。",
+      "body": "大厂游戏堆画面、堆内容，独立游戏只能在机制上做文章，反而常常让人眼前一亮。把一个核心玩法拆开揉碎：物理引擎拿来当解谜工具，时间倒流做成战斗机制，只用黑白两色也能讲完一个故事。年度独立游戏榜单里，几乎每款都赢在规则简单、组合无穷。这些创意后来还会被大作吸收，变成新的潮流。想看这个行业真正的想象力，别只盯着销量榜，去独立区翻一翻。",
+      "body_len": "S",
+      "domain": "game_acg",
+      "domain_cn": "游戏动漫",
+      "sub_tags": {
+        "indie": 1.0,
+        "pc_game": 0.4
+      },
+      "traits": {
+        "professional": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "game",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "G16",
+      "title": "想要的角色别赌池子：直购才是明白账",
+      "summary": "每月娱乐预算三百五，抽卡和直购的账，一笔一笔算给你看。",
+      "body": "抽卡最迷人的是那个万一呢，但期望值不会骗人：冲着指定角色去，直购几乎总比抽卡便宜。给自己立一条线：每月娱乐预算固定，比如三百，先扣掉吃饭社交，剩下的才是游戏开销。想要的角色等直购，实在手痒只碰半价池，歪了就停手。厂商分化的现在，运营稳、不逼氪的游戏才值得长期投入。玩得明白的人，从不跟概率赌气。",
+      "body_len": "S",
+      "domain": "game_acg",
+      "domain_cn": "游戏动漫",
+      "sub_tags": {
+        "mobile_game": 1.0,
+        "acg_goods": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "game",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
       "content_id": "L01",
       "title": "自己做饭真的省钱吗？我把账算给你看",
       "summary": "把做饭的账摊开算，自己动手远比想象中划算，备菜是关键。",
@@ -644,12 +740,11 @@
         "kitchen": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "deep_reader": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -667,12 +762,11 @@
         "home": 1.0
       },
       "traits": {
-        "price_sensitive": 0.7,
         "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -690,12 +784,11 @@
         "pet": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "deep_reader": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -714,12 +807,11 @@
         "daily": 0.4
       },
       "traits": {
-        "comparer": 1.0,
-        "casual": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -737,12 +829,11 @@
         "food": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "quick_skimmer": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -760,12 +851,11 @@
         "food": 1.0
       },
       "traits": {
-        "professional": 1.0,
-        "deep_reader": 0.7
+        "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -805,12 +895,11 @@
         "home": 1.0
       },
       "traits": {
-        "early_adopter": 1.0,
-        "premium_oriented": 0.7
+        "early_adopter": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -873,12 +962,11 @@
         "pet": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -907,6 +995,51 @@
       "reviewed_at": ""
     },
     {
+      "content_id": "L14",
+      "title": "比价的尽头是比需求：一份决策清单",
+      "summary": "买大件之前先过五个问题，能省下大半冲动消费。",
+      "body": "买东西这件事，大多数人纠结的是价格，其实该纠结的是需求。价格只是数字，需求对不上，再便宜也是浪费。\n\n分享一份我用了两年的决策清单，买大件之前把五个问题过一遍。第一，使用频率：一周用不到一次的，租比买划算，校园里新开的循环商店就是干这个的。第二，替代方案：宿舍现有装备能不能改造凑合。第三，持有成本：占多少地方、耗不耗电、要不要保养，四个人平摊下来还香不香。第四，残值：数码产品在二手市场掉价快不快，毕业时能不能出手回血。第五，后悔成本：买错了退换麻不麻烦。\n\n五问过完，八成的冲动消费会自己消失。剩下的两成再去看价格：先领平台券和换新补贴，再查二手行情，最后决定买新还是买旧。这两年循环消费推得凶，二手流通越来越规范，不少品类的九成新半价就能拿下。\n\n清单真正的用处不是省钱，是把决策从情绪手里接回来。比价比到最后，比的是你到底需要什么。",
+      "body_len": "L",
+      "domain": "life_shopping",
+      "domain_cn": "生活消费",
+      "sub_tags": {
+        "daily": 1.0,
+        "appliance": 0.4
+      },
+      "traits": {
+        "deep_reader": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "life",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "L15",
+      "title": "下单前速查：防冲动十条",
+      "summary": "贴在墙上的十条，全过一遍再付款。",
+      "body": "下单前过一遍：一，是不是这周就要用；二，宿舍有没有能替代的；三，便宜是不是凑单凑出来的；四，差评里有没有你在意的问题；五，七天无理由到底退不退；六，复购价和首单价差多少；七，要不要等大促；八，二手市场多少钱；九，运费险买没买；十，把它从购物车删掉，你还会不会想起来。十条全过，再付款。",
+      "body_len": "S",
+      "domain": "life_shopping",
+      "domain_cn": "生活消费",
+      "sub_tags": {
+        "daily": 1.0
+      },
+      "traits": {
+        "quick_skimmer": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "life",
+      "purity": 0.5,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
       "content_id": "S01",
       "title": "五百元档跑鞋横评：三款各有各的门道",
       "summary": "五百元档闭眼买容易踩坑，三款主流放在一起比，门道都在细节里。",
@@ -919,12 +1052,11 @@
         "fitness": 0.4
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "comparer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -942,12 +1074,11 @@
         "gear": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "professional": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -965,12 +1096,11 @@
         "camping": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -988,12 +1118,11 @@
         "hiking": 1.0
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1011,12 +1140,11 @@
         "fitness": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "decisive": 0.4
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1035,12 +1163,11 @@
         "fitness": 0.7
       },
       "traits": {
-        "early_adopter": 1.0,
-        "premium_oriented": 0.7
+        "early_adopter": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1058,12 +1185,11 @@
         "camping": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "price_sensitive": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1148,12 +1274,11 @@
         "hiking": 1.0
       },
       "traits": {
-        "professional": 1.0,
-        "decisive": 0.7
+        "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1194,12 +1319,11 @@
         "movie": 1.0
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 1.0
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1217,12 +1341,11 @@
         "movie": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1240,12 +1363,11 @@
         "music": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "professional": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1263,12 +1385,11 @@
         "music": 1.0
       },
       "traits": {
-        "comparer": 0.7,
         "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1308,12 +1429,11 @@
         "show": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "casual": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1375,12 +1495,11 @@
         "movie": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1398,12 +1517,11 @@
         "music": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "early_adopter": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1421,12 +1539,11 @@
         "movie": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "conservative": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1444,14 +1561,36 @@
         "variety": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "av",
+      "purity": 0.5,
+      "is_probe": false,
+      "review_status": "approved",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "A17",
+      "title": "片单挑花眼？按心情点播就好",
+      "summary": "观影不用做功课，心情才是最好的片单。",
+      "body": "片单收藏了两百部，一部没看——这是很多人的常态。其实看片不用搞成任务：想笑就翻喜剧和综艺，想哭就挑催泪的，精力过剩上动作片，失眠的夜里来一部老片子，熟悉的对白比什么都助眠。评分只是参考，别人的眼泪和你的笑点不在一个频道。这两年流行跟着演出去旅行，现场感确实珍贵，但门槛最低的快乐，还是窝在宿舍里按心情点播。看就完了。",
+      "body_len": "S",
+      "domain": "av_ent",
+      "domain_cn": "影视娱乐",
+      "sub_tags": {
+        "movie": 1.0,
+        "streaming": 0.4
+      },
+      "traits": {
+        "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
       "purity": 0.333,
       "is_probe": false,
-      "review_status": "approved",
+      "review_status": "pending",
       "reviewed_by": "",
       "reviewed_at": ""
     },
@@ -1489,12 +1628,11 @@
         "history": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1557,12 +1695,11 @@
         "language": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1580,12 +1717,11 @@
         "science": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 1.0
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1625,12 +1761,11 @@
         "reading": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "deep_reader": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1671,12 +1806,11 @@
         "reading": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "comparer": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1694,12 +1828,11 @@
         "history": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "deep_reader": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "approved",
       "reviewed_by": "",
@@ -1717,14 +1850,59 @@
         "science": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "culture",
+      "purity": 0.5,
+      "is_probe": false,
+      "review_status": "approved",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "C13",
+      "title": "逛博物馆不用做功课：躺平式路线",
+      "summary": "不背年代不记流派，照样逛出滋味。",
+      "body": "博物馆热了这么久，还有人被要做攻略劝退。其实随便逛也是一种逛法：进馆先拿一张纸质地图，挑顺眼的三个展厅走马观花，看到喜欢的展品就停下，读读铭牌上的一句话介绍，拍两张照，足够了。馆里的文创店和盖章点，比展览本身更适合第一次来的人。逛累了出门喝杯咖啡，回家翻照片，自然会冒出想弄明白的东西，那时候再做功课也不迟。兴趣是逛出来的，不是背出来的。",
+      "body_len": "S",
+      "domain": "culture_art",
+      "domain_cn": "文化艺术",
+      "sub_tags": {
+        "museum": 1.0,
+        "history": 0.4
+      },
+      "traits": {
+        "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
       "purity": 0.333,
       "is_probe": false,
-      "review_status": "approved",
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "C14",
+      "title": "博物馆文创凭什么卖几十块：算笔设计账",
+      "summary": "一枚冰箱贴的钱，一半付给设计，一半付给想把美带回家。",
+      "body": "博物馆文创越做越讲究，也有人觉得贵：一枚冰箱贴三十五，一把团扇六十八。拆一拆这笔账：设计稿改十几轮，打样三五版才定稿，小批量生产摊下来成本不低，再算上授权和运营，利润其实不厚。更关键的是，你带走的不是塑料和纸，是一件被认真设计过的东西：纹样来自馆藏，配色对过展品原件。这两年文创市集火起来，本质是大家愿意为好设计付钱。买得起就买，暂时不买，看看也是享受。",
+      "body_len": "S",
+      "domain": "culture_art",
+      "domain_cn": "文化艺术",
+      "sub_tags": {
+        "museum": 1.0,
+        "history": 0.4
+      },
+      "traits": {
+        "premium_oriented": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "culture",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
       "reviewed_by": "",
       "reviewed_at": ""
     },
@@ -1740,12 +1918,11 @@
         "course": 1.0
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "quick_skimmer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1763,12 +1940,11 @@
         "course": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "deep_reader": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1787,12 +1963,11 @@
         "note": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1855,12 +2030,11 @@
         "note": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "quick_skimmer": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1901,12 +2075,11 @@
         "course": 1.0
       },
       "traits": {
-        "casual": 1.0,
-        "decisive": 0.7
+        "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1924,12 +2097,11 @@
         "exam": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "professional": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1948,12 +2120,11 @@
         "course": 0.7
       },
       "traits": {
-        "comparer": 1.0,
-        "casual": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1972,12 +2143,11 @@
         "course": 0.7
       },
       "traits": {
-        "professional": 0.7,
         "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -1996,12 +2166,11 @@
         "campus_tool": 0.7
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2052,6 +2221,75 @@
       "reviewed_at": ""
     },
     {
+      "content_id": "E15",
+      "title": "实验数据不理想：重做还是照实写",
+      "summary": "照实写。误差分析写得具体，比漂亮的数据更有说服力。",
+      "body": "实验报告最忌讳凑数据：结果不理想，就照着应该的样子改一改。老师阅卷无数，一眼看穿。数据不理想恰恰是最好的素材：误差来自哪里，是仪器精度、操作偏差还是环境干扰，一条条列出来，分析得越具体，分数越高。科学训练的核心不是得到正确结果，是诚实面对结果。重做当然可以，但重做之前，先把这份误差分析写清楚。这条原则做实验够用，做别的也够用。",
+      "body_len": "S",
+      "domain": "study_exam",
+      "domain_cn": "学习考试",
+      "sub_tags": {
+        "lab": 1.0,
+        "note": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "study",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "E16",
+      "title": "小组作业别内耗：分工表贴出来",
+      "summary": "分工、截止、验收，三张表解决九成小组矛盾。",
+      "body": "小组作业拖到最后三天赶工，锅从天上来，问题多半出在分工模糊。开组会别聊感受，直接上分工表：任务拆到人，截止日期精确到天，交什么格式写清楚，群里置顶，谁的部分谁负责。验收设两轮：截止前三天交初稿，组内交叉互审一轮，最后一天合并排版。有人摆烂？分工表在手，谁做了什么一目了然。合作不是你好我好，是规则清楚。表格一贴，内耗少九成。",
+      "body_len": "S",
+      "domain": "study_exam",
+      "domain_cn": "学习考试",
+      "sub_tags": {
+        "group_work": 1.0,
+        "campus_tool": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "study",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "E17",
+      "title": "口语是块肌肉：二十一天开练计划",
+      "summary": "别再收藏吃灰，每天三十分钟，照着练就完事。",
+      "body": "口语差的人有个共同点：输入远远大于输出。收藏了几十个教程，张嘴还是卡壳。口语是肌肉不是知识，得靠天天练。\n\n这套计划二十一天，每天三十分钟，分三段。前十天是敢说期：每天挑一段一分钟的生活场景，点外卖、问路、和室友争论都行，用目标语言把过程说出来，说得烂没关系，录下来听一遍。中间七天是模仿期：找一段语速正常的短视频，跟读二十遍，连读和语气都要像，练的是嘴部肌肉的记忆。最后四天是实战期：去语言角或者线上语伴房间，每天强制开口十五分钟，允许自己犯所有犯过的错。\n\n三条纪律：第一，不背单词表，生词只在场景里学；第二，不纠语法，先保证说完；第三，保留每天录音，第二十一天回头听第一天的，你会不敢相信是自己。二十一天之后，这套流程滚动用。二十一天结束，你会带着一套自己的练法继续走下去。开口这件事，从来没有准备好的一天，只有开始练的一天，而今天就是第二十一天里的第一天。",
+      "body_len": "L",
+      "domain": "study_exam",
+      "domain_cn": "学习考试",
+      "sub_tags": {
+        "language": 1.0,
+        "course": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "study",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
       "content_id": "H01",
       "title": "校园活动不用花钱，也能玩得很满",
       "summary": "讲座、展览、社团开放日，先把免费的排进日程。",
@@ -2063,12 +2301,11 @@
         "campus_life": 1.0
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "quick_skimmer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2087,12 +2324,11 @@
         "campus_life": 0.7
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "deep_reader": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2111,12 +2347,11 @@
         "news_literacy": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2134,12 +2369,11 @@
         "trend": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2179,12 +2413,11 @@
         "club": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "casual": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2225,12 +2458,11 @@
         "campus_life": 1.0
       },
       "traits": {
-        "casual": 1.0,
-        "comparer": 0.7
+        "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2248,12 +2480,11 @@
         "campus_life": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "professional": 0.4
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2271,12 +2502,11 @@
         "club": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "casual": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.333,
+      "purity": 0.5,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2295,12 +2525,11 @@
         "campus_notice": 0.7
       },
       "traits": {
-        "deep_reader": 0.7,
         "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "social",
-      "purity": 0.25,
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",
@@ -2368,6 +2597,52 @@
       "cover_type": "css_gradient",
       "cover_theme": "social",
       "purity": 0.5,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "H15",
+      "title": "志愿活动怎么选：认定一个就去",
+      "summary": "别在几十个群里比价志愿时长，选准一个方向扎下去。",
+      "body": "志愿信息群加了一打，活动挑花了眼，最后哪个都没去——志愿这件事，最忌攒时长心态。选活动只看两条：一是方向你是否真的在意，支教助学、社区服务、赛会保障，偏好哪个去哪个，今年西部计划招募六万人，九成岗位在基层，长期项目更有沉淀；二是时间能否可持续，与其每月赶三次凑数，不如固定两周去一次。选定之后别再比来比去，坚持一学期，收获的熟人和技能，比时长数字值钱。",
+      "body_len": "S",
+      "domain": "social_hot",
+      "domain_cn": "社交热点",
+      "sub_tags": {
+        "volunteer": 1.0,
+        "campus_life": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "social",
+      "purity": 0.333,
+      "is_probe": false,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "content_id": "H16",
+      "title": "一条校园热点话题的二十四小时",
+      "summary": "从宿舍群到全校热榜，一条消息的传播路径，值得看懂一次。",
+      "body": "早上八点，一张模糊的截图出现在三个年级群里：某食堂窗口要撤了。九点，有人补上细节和现场照片，转发开始加速。十点，几个大群里出现两个版本，细节互相矛盾，但情绪都是惋惜。中午，校园墙把它顶上热榜，评论区吵成两派，一派惋惜，一派说别乱带节奏。下午三点，后勤部门发声：是搬迁不是撤销，新窗口下月开张。晚上，热榜还在，只是已经没人关心真相了。\n\n这条时间线里值得注意的不是结果，是每个节点的角色：发起者提供情绪，转发者贡献速度，二创者贡献流量，辟谣者总是姗姗来迟。传播研究里有个稳定的结论：情绪跑得比事实快得多，而更正消息的到达率，只有原消息的两成。\n\n看懂这条链路，你会明白两件事。第一，让你按下转发的往往是情绪而不是事实，手指停三秒，先等一个信源。第二，看到全网都在说的时候，恰恰是离事实最远的时候。媒介素养不是少上网，是上网的时候知道自己站在哪里。",
+      "body_len": "L",
+      "domain": "social_hot",
+      "domain_cn": "社交热点",
+      "sub_tags": {
+        "trend": 1.0,
+        "news_literacy": 0.7
+      },
+      "traits": {
+        "professional": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "social",
+      "purity": 0.333,
       "is_probe": false,
       "review_status": "pending",
       "reviewed_by": "",

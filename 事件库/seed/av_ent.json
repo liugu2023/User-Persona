@@ -12,8 +12,7 @@
         "movie": 1.0
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 1.0
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -31,8 +30,7 @@
         "movie": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -50,8 +48,7 @@
         "music": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "professional": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -69,7 +66,6 @@
         "music": 1.0
       },
       "traits": {
-        "comparer": 0.7,
         "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
@@ -106,8 +102,7 @@
         "show": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "casual": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -161,8 +156,7 @@
         "movie": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -180,8 +174,7 @@
         "music": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "early_adopter": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -199,8 +192,7 @@
         "movie": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "conservative": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
@@ -218,13 +210,31 @@
         "variety": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "av",
       "is_probe": false,
       "review_status": "approved"
+    },
+    {
+      "content_id": "A17",
+      "title": "片单挑花眼？按心情点播就好",
+      "summary": "观影不用做功课，心情才是最好的片单。",
+      "body": "片单收藏了两百部，一部没看——这是很多人的常态。其实看片不用搞成任务：想笑就翻喜剧和综艺，想哭就挑催泪的，精力过剩上动作片，失眠的夜里来一部老片子，熟悉的对白比什么都助眠。评分只是参考，别人的眼泪和你的笑点不在一个频道。这两年流行跟着演出去旅行，现场感确实珍贵，但门槛最低的快乐，还是窝在宿舍里按心情点播。看就完了。",
+      "body_len": "S",
+      "domain": "av_ent",
+      "sub_tags": {
+        "movie": 1.0,
+        "streaming": 0.4
+      },
+      "traits": {
+        "casual": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "av",
+      "is_probe": false,
+      "review_status": "pending"
     }
   ],
   "probes": [

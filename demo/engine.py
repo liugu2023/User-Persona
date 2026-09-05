@@ -1042,8 +1042,13 @@ class Session:
                 pole = POLE_NAME[axis][1]
             else:
                 pole = None                              # 中性区不展示
-            if pole and conf < 0.5:
-                pole = None
+            if pole:
+                # 展示门槛之二：证据质量比。随机点击会让任意轴偶尔越线
+                # （实测展示精度曾低至 25%），要求主导极质量占近七成以上，
+                # 噪声结论大多过不了这道门——"宁可少说一条"。
+                mass_ratio = min(pro, con) / max(pro, con) if max(pro, con) else 1.0
+                if conf < 0.5 or mass_ratio > 0.45:
+                    pole = None
             doms = {e["domain"] for e in self.trait_evidence[axis].values() if e["domain"]}
             out[axis] = {"value": round(value, 4), "pole": pole,
                          "pole_cn": TRAIT_CN.get(pole), "n": n,
@@ -1418,6 +1423,8 @@ class Feeder:
         interest_limit = min(4, n)
         if ranked and len(out) < interest_limit:
             keep = 1 if s.conf(ranked[0]) >= 1.0 else 2
+            if s.screen_index <= 2:
+                keep = 1          # 探针后的前两屏不押注单一域：锁错域会放大成整场误判
             keep = min(keep, interest_limit - len(out))
             out += self._take(s, [c for c in pool if c["domain"] == ranked[0]],
                               keep, st, by_interest)
@@ -1430,8 +1437,9 @@ class Feeder:
                  for c in [self.lib.contents.get(cid)] if c and c.get("domain")}
         unseen_dom = [d for d in DOMAIN_CN if d not in shown]
         if unseen_dom and len(out) < interest_limit:
+            slots = 2 if s.screen_index <= 2 else 1
             out += self._take(s, [c for c in pool if c["domain"] in unseen_dom],
-                              min(1, interest_limit - len(out)), st, by_explore)
+                              min(slots, interest_limit - len(out)), st, by_explore)
         # 位 3-4 余下：top2/top3 域
         if len(out) < interest_limit:
             out += self._take(s, [c for c in pool if c["domain"] in ranked[1:3]],

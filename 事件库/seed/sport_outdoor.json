@@ -13,8 +13,7 @@
         "fitness": 0.4
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "comparer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -31,8 +30,7 @@
         "gear": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "professional": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -49,8 +47,7 @@
         "camping": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -67,8 +64,7 @@
         "hiking": 1.0
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -85,8 +81,7 @@
         "fitness": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "decisive": 0.4
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -104,8 +99,7 @@
         "fitness": 0.7
       },
       "traits": {
-        "early_adopter": 1.0,
-        "premium_oriented": 0.7
+        "early_adopter": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -122,8 +116,7 @@
         "camping": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "price_sensitive": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",
@@ -192,8 +185,7 @@
         "hiking": 1.0
       },
       "traits": {
-        "professional": 1.0,
-        "decisive": 0.7
+        "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "sport",

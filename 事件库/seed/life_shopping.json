@@ -30,8 +30,7 @@
         "kitchen": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "deep_reader": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -49,7 +48,6 @@
         "home": 1.0
       },
       "traits": {
-        "price_sensitive": 0.7,
         "casual": 1.0
       },
       "cover_type": "css_gradient",
@@ -68,8 +66,7 @@
         "pet": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "deep_reader": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -88,8 +85,7 @@
         "daily": 0.4
       },
       "traits": {
-        "comparer": 1.0,
-        "casual": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -107,8 +103,7 @@
         "food": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "quick_skimmer": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -126,8 +121,7 @@
         "food": 1.0
       },
       "traits": {
-        "professional": 1.0,
-        "deep_reader": 0.7
+        "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -163,8 +157,7 @@
         "home": 1.0
       },
       "traits": {
-        "early_adopter": 1.0,
-        "premium_oriented": 0.7
+        "early_adopter": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -219,8 +212,7 @@
         "pet": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",
@@ -239,6 +231,43 @@
       },
       "traits": {
         "price_sensitive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "life",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "L14",
+      "title": "比价的尽头是比需求：一份决策清单",
+      "summary": "买大件之前先过五个问题，能省下大半冲动消费。",
+      "body": "买东西这件事，大多数人纠结的是价格，其实该纠结的是需求。价格只是数字，需求对不上，再便宜也是浪费。\n\n分享一份我用了两年的决策清单，买大件之前把五个问题过一遍。第一，使用频率：一周用不到一次的，租比买划算，校园里新开的循环商店就是干这个的。第二，替代方案：宿舍现有装备能不能改造凑合。第三，持有成本：占多少地方、耗不耗电、要不要保养，四个人平摊下来还香不香。第四，残值：数码产品在二手市场掉价快不快，毕业时能不能出手回血。第五，后悔成本：买错了退换麻不麻烦。\n\n五问过完，八成的冲动消费会自己消失。剩下的两成再去看价格：先领平台券和换新补贴，再查二手行情，最后决定买新还是买旧。这两年循环消费推得凶，二手流通越来越规范，不少品类的九成新半价就能拿下。\n\n清单真正的用处不是省钱，是把决策从情绪手里接回来。比价比到最后，比的是你到底需要什么。",
+      "body_len": "L",
+      "domain": "life_shopping",
+      "sub_tags": {
+        "daily": 1.0,
+        "appliance": 0.4
+      },
+      "traits": {
+        "deep_reader": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "life",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "L15",
+      "title": "下单前速查：防冲动十条",
+      "summary": "贴在墙上的十条，全过一遍再付款。",
+      "body": "下单前过一遍：一，是不是这周就要用；二，宿舍有没有能替代的；三，便宜是不是凑单凑出来的；四，差评里有没有你在意的问题；五，七天无理由到底退不退；六，复购价和首单价差多少；七，要不要等大促；八，二手市场多少钱；九，运费险买没买；十，把它从购物车删掉，你还会不会想起来。十条全过，再付款。",
+      "body_len": "S",
+      "domain": "life_shopping",
+      "sub_tags": {
+        "daily": 1.0
+      },
+      "traits": {
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "life",

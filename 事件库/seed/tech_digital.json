@@ -13,8 +13,7 @@
         "hardware": 0.4
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "comparer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -33,8 +32,7 @@
         "hardware": 0.7
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "professional": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -53,7 +51,6 @@
         "devops": 0.7
       },
       "traits": {
-        "deep_reader": 0.7,
         "professional": 1.0
       },
       "cover_type": "css_gradient",
@@ -72,8 +69,7 @@
         "hardware": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -91,8 +87,7 @@
         "programming": 1.0
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 1.0
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -129,8 +124,7 @@
         "hardware": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "price_sensitive": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -149,8 +143,7 @@
         "programming": 0.7
       },
       "traits": {
-        "professional": 1.0,
-        "decisive": 0.7
+        "professional": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -187,8 +180,7 @@
         "hardware": 0.4
       },
       "traits": {
-        "comparer": 1.0,
-        "premium_oriented": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -207,7 +199,6 @@
         "gadget": 1.0
       },
       "traits": {
-        "early_adopter": 0.7,
         "professional": 1.0
       },
       "cover_type": "css_gradient",
@@ -226,8 +217,7 @@
         "mobile": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",
@@ -245,8 +235,45 @@
         "programming": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "professional": 0.7
+        "quick_skimmer": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T14",
+      "title": "宿舍服务器半夜挂了：先回滚，再排查",
+      "summary": "线上出问题，第一反应决定损失大小。回滚不是逃避，是最快的止血。",
+      "body": "凌晨一点，服务挂了，群里全在@你。这时候最忌讳的就是当场修：改一行、重启一次、再看一眼，折腾半小时没好，损失还在扩大。正确顺序是先止血再找病根：回滚到上一个能跑的版本，五分钟恢复服务；用户睡得香，你也睡得着。排查留给白天：日志、监控、改动记录，一条条对。记住，线上环境里，快和稳永远排在聪明前面。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "devops": 1.0,
+        "programming": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T15",
+      "title": "装机别纠结：两套配置单直接抄",
+      "summary": "预算四千和六千各一套，兼容性都排过雷，照着买不踩坑。",
+      "body": "装机最难的不是动手，是选件：处理器和主板要配套，内存频率看板子，电源别省，机箱看风道。自己查一晚上资料，不如直接抄作业。预算四千：主流六核加上一张二手显卡，写代码和轻度游戏都够用。预算六千：内存和固态翻倍，毕业前不用折腾第二次。清单都是验证过兼容性的，买齐了一下午装完。装机是手段，用起来顺手才是目的。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "hardware": 1.0,
+        "gadget": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "tech",

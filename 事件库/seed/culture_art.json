@@ -30,8 +30,7 @@
         "history": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
@@ -86,8 +85,7 @@
         "language": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
@@ -105,8 +103,7 @@
         "science": 1.0
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 1.0
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
@@ -142,8 +139,7 @@
         "reading": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "deep_reader": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
@@ -180,8 +176,7 @@
         "reading": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "comparer": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
@@ -199,8 +194,7 @@
         "history": 1.0
       },
       "traits": {
-        "comparer": 1.0,
-        "deep_reader": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
@@ -218,13 +212,50 @@
         "science": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "casual": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "culture",
       "is_probe": false,
       "review_status": "approved"
+    },
+    {
+      "content_id": "C13",
+      "title": "逛博物馆不用做功课：躺平式路线",
+      "summary": "不背年代不记流派，照样逛出滋味。",
+      "body": "博物馆热了这么久，还有人被要做攻略劝退。其实随便逛也是一种逛法：进馆先拿一张纸质地图，挑顺眼的三个展厅走马观花，看到喜欢的展品就停下，读读铭牌上的一句话介绍，拍两张照，足够了。馆里的文创店和盖章点，比展览本身更适合第一次来的人。逛累了出门喝杯咖啡，回家翻照片，自然会冒出想弄明白的东西，那时候再做功课也不迟。兴趣是逛出来的，不是背出来的。",
+      "body_len": "S",
+      "domain": "culture_art",
+      "sub_tags": {
+        "museum": 1.0,
+        "history": 0.4
+      },
+      "traits": {
+        "casual": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "culture",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "C14",
+      "title": "博物馆文创凭什么卖几十块：算笔设计账",
+      "summary": "一枚冰箱贴的钱，一半付给设计，一半付给想把美带回家。",
+      "body": "博物馆文创越做越讲究，也有人觉得贵：一枚冰箱贴三十五，一把团扇六十八。拆一拆这笔账：设计稿改十几轮，打样三五版才定稿，小批量生产摊下来成本不低，再算上授权和运营，利润其实不厚。更关键的是，你带走的不是塑料和纸，是一件被认真设计过的东西：纹样来自馆藏，配色对过展品原件。这两年文创市集火起来，本质是大家愿意为好设计付钱。买得起就买，暂时不买，看看也是享受。",
+      "body_len": "S",
+      "domain": "culture_art",
+      "sub_tags": {
+        "museum": 1.0,
+        "history": 0.4
+      },
+      "traits": {
+        "premium_oriented": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "culture",
+      "is_probe": false,
+      "review_status": "pending"
     }
   ],
   "probes": [

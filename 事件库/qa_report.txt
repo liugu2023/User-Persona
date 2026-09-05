@@ -11,6 +11,7 @@
   ✓ A10 (369 字/L)
   ✓ A11 (171 字/S)
   ✓ A12 (156 字/S)
+  ✓ A17 (158 字/S)
   ✓ P15 (146 字/S)
   ✓ P16 (144 字/S)
   ✓ AD22
@@ -29,6 +30,8 @@
   ✓ C10 (409 字/L)
   ✓ C11 (387 字/L)
   ✓ C12 (166 字/S)
+  ✓ C13 (169 字/S)
+  ✓ C14 (177 字/S)
   ✓ P09 (126 字/S)
   ✓ P10 (132 字/S)
   ✓ AD13
@@ -48,6 +51,9 @@
   ✓ G11 (380 字/L)
   ✓ G12 (154 字/S)
   ✓ G13 (172 字/S)
+  ✓ G14 (149 字/S)
+  ✓ G15 (164 字/S)
+  ✓ G16 (147 字/S)
   ✓ P03 (163 字/S)
   ✓ P04 (153 字/S)
   ✓ AD04
@@ -67,6 +73,8 @@
   ✓ L11 (153 字/S)
   ✓ L12 (172 字/S)
   ✓ L13 (165 字/S)
+  ✓ L14 (364 字/L)
+  ✓ L15 (142 字/S)
   ✓ P05 (137 字/S)
   ✓ P06 (151 字/S)
   ✓ AD07
@@ -87,6 +95,8 @@
   ✓ H12 (123 字/S)
   ✓ H13 (158 字/S)
   ✓ H14 (175 字/S)
+  ✓ H15 (176 字/S)
+  ✓ H16 (368 字/L)
   ✓ P13 (132 字/S)
   ✓ P14 (124 字/S)
   ✓ AD19
@@ -125,6 +135,9 @@
   ✓ E12 (132 字/S)
   ✓ E13 (129 字/S)
   ✓ E14 (136 字/S)
+  ✓ E15 (164 字/S)
+  ✓ E16 (162 字/S)
+  ✓ E17 (378 字/L)
   ✓ P07 (132 字/S)
   ✓ P08 (131 字/S)
   ✓ AD10
@@ -144,6 +157,8 @@
   ✓ T11 (354 字/L)
   ✓ T12 (134 字/S)
   ✓ T13 (135 字/S)
+  ✓ T14 (148 字/S)
+  ✓ T15 (151 字/S)
   ✓ P01 (124 字/S)
   ✓ P02 (133 字/S)
   ✓ AD01
@@ -160,67 +175,44 @@
   ✓ Q9（消歧卡）
   ✓ Q10（消歧卡）
 
-  共线 casual x comparer: 4/19 = 21.1%
-  共线 casual x conservative: 2/10 = 20%
-  共线 casual x decisive: 6/13 = 46.2%
-  共线 casual x price_sensitive: 1/19 = 5.3%
-  共线 casual x quick_skimmer: 8/17 = 47.1%
-  共线 comparer x conservative: 1/10 = 10%
-  共线 comparer x deep_reader: 2/19 = 10.5%
-  共线 comparer x premium_oriented: 3/15 = 20%
-  共线 comparer x price_sensitive: 4/19 = 21.1%
-  共线 comparer x professional: 2/19 = 10.5%
-  共线 conservative x deep_reader: 3/10 = 30%
-  共线 conservative x price_sensitive: 2/10 = 20%
-  共线 conservative x quick_skimmer: 1/10 = 10%
-  共线 decisive x professional: 4/13 = 30.8%
-  共线 decisive x quick_skimmer: 3/13 = 23.1%
-  共线 deep_reader x premium_oriented: 3/15 = 20%
-  共线 deep_reader x professional: 9/20 = 45%
-  共线 early_adopter x premium_oriented: 3/11 = 27.3%
-  共线 early_adopter x price_sensitive: 1/11 = 9.1%
-  共线 early_adopter x professional: 1/11 = 9.1%
-  共线 premium_oriented x professional: 3/15 = 20%
-  共线 price_sensitive x quick_skimmer: 2/17 = 11.8%
-  共线 professional x quick_skimmer: 1/17 = 5.9%
-  配对覆盖 tech_digital / price：4 组（pro=2, con=2）
-  配对覆盖 tech_digital / depth：4 组（pro=2, con=2）
-  配对覆盖 tech_digital / novelty：2 组（pro=2, con=1）
-  配对覆盖 tech_digital / expertise：18 组（pro=6, con=3）
-  配对覆盖 tech_digital / decision：4 组（pro=2, con=2）
-  配对覆盖 game_acg / price：8 组（pro=4, con=2）
-  配对覆盖 game_acg / depth：6 组（pro=3, con=2）
-  配对覆盖 game_acg / novelty：2 组（pro=2, con=1）
-  配对覆盖 game_acg / expertise：2 组（pro=2, con=1）
-  配对覆盖 game_acg / decision：3 组（pro=1, con=3）
-  配对覆盖 life_shopping / price：8 组（pro=4, con=2）
-  配对覆盖 life_shopping / depth：3 组（pro=3, con=1）
+  配对覆盖 tech_digital / price：1 组（pro=1, con=1）
+  配对覆盖 tech_digital / depth：2 组（pro=1, con=2）
+  配对覆盖 tech_digital / novelty：1 组（pro=1, con=1）
+  配对覆盖 tech_digital / expertise：3 组（pro=3, con=1）
+  配对覆盖 tech_digital / decision：3 组（pro=3, con=1）
+  配对覆盖 game_acg / price：6 组（pro=3, con=2）
+  配对覆盖 game_acg / depth：2 组（pro=2, con=1）
+  配对覆盖 game_acg / novelty：1 组（pro=1, con=1）
+  配对覆盖 game_acg / expertise：1 组（pro=1, con=1）
+  配对覆盖 game_acg / decision：4 组（pro=2, con=2）
+  配对覆盖 life_shopping / price：3 组（pro=3, con=1）
+  配对覆盖 life_shopping / depth：1 组（pro=1, con=1）
   配对覆盖 life_shopping / novelty：1 组（pro=1, con=1）
-  配对覆盖 life_shopping / expertise：3 组（pro=1, con=3）
+  配对覆盖 life_shopping / expertise：1 组（pro=1, con=1）
   配对覆盖 life_shopping / decision：6 组（pro=2, con=3）
-  配对覆盖 sport_outdoor / price：6 组（pro=3, con=2）
+  配对覆盖 sport_outdoor / price：2 组（pro=2, con=1）
   配对覆盖 sport_outdoor / depth：2 组（pro=2, con=1）
   配对覆盖 sport_outdoor / novelty：1 组（pro=1, con=1）
-  配对覆盖 sport_outdoor / expertise：6 组（pro=3, con=2）
-  配对覆盖 sport_outdoor / decision：6 组（pro=3, con=2）
+  配对覆盖 sport_outdoor / expertise：1 组（pro=1, con=1）
+  配对覆盖 sport_outdoor / decision：1 组（pro=1, con=1）
   配对覆盖 av_ent / price：2 组（pro=1, con=2）
   配对覆盖 av_ent / depth：2 组（pro=1, con=2）
-  配对覆盖 av_ent / novelty：4 组（pro=2, con=2）
-  配对覆盖 av_ent / expertise：12 组（pro=3, con=4）
-  配对覆盖 av_ent / decision：3 组（pro=1, con=3）
-  配对覆盖 culture_art / price：1 组（pro=1, con=1）
-  配对覆盖 culture_art / depth：12 组（pro=4, con=3）
+  配对覆盖 av_ent / novelty：1 组（pro=1, con=1）
+  配对覆盖 av_ent / expertise：1 组（pro=1, con=1）
+  配对覆盖 av_ent / decision：2 组（pro=1, con=2）
+  配对覆盖 culture_art / price：2 组（pro=1, con=2）
+  配对覆盖 culture_art / depth：6 组（pro=2, con=3）
   配对覆盖 culture_art / novelty：1 组（pro=1, con=1）
-  配对覆盖 culture_art / expertise：6 组（pro=2, con=3）
-  配对覆盖 culture_art / decision：2 组（pro=1, con=2）
+  配对覆盖 culture_art / expertise：1 组（pro=1, con=1）
+  配对覆盖 culture_art / decision：1 组（pro=1, con=1）
   配对覆盖 study_exam / price：4 组（pro=2, con=2）
-  配对覆盖 study_exam / depth：6 组（pro=2, con=3）
+  配对覆盖 study_exam / depth：1 组（pro=1, con=1）
   配对覆盖 study_exam / novelty：1 组（pro=1, con=1）
-  配对覆盖 study_exam / expertise：16 组（pro=4, con=4）
-  配对覆盖 study_exam / decision：4 组（pro=2, con=2）
+  配对覆盖 study_exam / expertise：2 组（pro=1, con=2）
+  配对覆盖 study_exam / decision：8 组（pro=4, con=2）
   配对覆盖 social_hot / price：4 组（pro=2, con=2）
-  配对覆盖 social_hot / depth：9 组（pro=3, con=3）
+  配对覆盖 social_hot / depth：2 组（pro=1, con=2）
   配对覆盖 social_hot / novelty：2 组（pro=1, con=2）
-  配对覆盖 social_hot / expertise：12 组（pro=3, con=4）
-  配对覆盖 social_hot / decision：2 组（pro=1, con=2）
-共检查兴趣+探针 119 条、广告 24 条、消歧卡 10 组，问题条目 0 个
+  配对覆盖 social_hot / expertise：2 组（pro=2, con=1）
+  配对覆盖 social_hot / decision：2 组（pro=2, con=1）
+共检查兴趣+探针 134 条、广告 24 条、消歧卡 10 组，问题条目 0 个

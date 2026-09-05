@@ -12,8 +12,7 @@
         "course": 1.0
       },
       "traits": {
-        "price_sensitive": 1.0,
-        "quick_skimmer": 0.7
+        "price_sensitive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -30,8 +29,7 @@
         "course": 1.0
       },
       "traits": {
-        "premium_oriented": 1.0,
-        "deep_reader": 0.7
+        "premium_oriented": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -49,8 +47,7 @@
         "note": 0.7
       },
       "traits": {
-        "deep_reader": 1.0,
-        "professional": 0.7
+        "deep_reader": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -102,8 +99,7 @@
         "note": 1.0
       },
       "traits": {
-        "conservative": 1.0,
-        "quick_skimmer": 0.7
+        "conservative": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -138,8 +134,7 @@
         "course": 1.0
       },
       "traits": {
-        "casual": 1.0,
-        "decisive": 0.7
+        "casual": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -156,8 +151,7 @@
         "exam": 1.0
       },
       "traits": {
-        "decisive": 1.0,
-        "professional": 0.7
+        "decisive": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -175,8 +169,7 @@
         "course": 0.7
       },
       "traits": {
-        "comparer": 1.0,
-        "casual": 0.7
+        "comparer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -194,7 +187,6 @@
         "course": 0.7
       },
       "traits": {
-        "professional": 0.7,
         "comparer": 1.0
       },
       "cover_type": "css_gradient",
@@ -213,8 +205,7 @@
         "campus_tool": 0.7
       },
       "traits": {
-        "quick_skimmer": 1.0,
-        "casual": 0.7
+        "quick_skimmer": 1.0
       },
       "cover_type": "css_gradient",
       "cover_theme": "study",
@@ -253,6 +244,63 @@
       "cover_type": "css_gradient",
       "cover_theme": "study",
       "is_probe": false
+    },
+    {
+      "content_id": "E15",
+      "title": "实验数据不理想：重做还是照实写",
+      "summary": "照实写。误差分析写得具体，比漂亮的数据更有说服力。",
+      "body": "实验报告最忌讳凑数据：结果不理想，就照着应该的样子改一改。老师阅卷无数，一眼看穿。数据不理想恰恰是最好的素材：误差来自哪里，是仪器精度、操作偏差还是环境干扰，一条条列出来，分析得越具体，分数越高。科学训练的核心不是得到正确结果，是诚实面对结果。重做当然可以，但重做之前，先把这份误差分析写清楚。这条原则做实验够用，做别的也够用。",
+      "body_len": "S",
+      "domain": "study_exam",
+      "sub_tags": {
+        "lab": 1.0,
+        "note": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "study",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "E16",
+      "title": "小组作业别内耗：分工表贴出来",
+      "summary": "分工、截止、验收，三张表解决九成小组矛盾。",
+      "body": "小组作业拖到最后三天赶工，锅从天上来，问题多半出在分工模糊。开组会别聊感受，直接上分工表：任务拆到人，截止日期精确到天，交什么格式写清楚，群里置顶，谁的部分谁负责。验收设两轮：截止前三天交初稿，组内交叉互审一轮，最后一天合并排版。有人摆烂？分工表在手，谁做了什么一目了然。合作不是你好我好，是规则清楚。表格一贴，内耗少九成。",
+      "body_len": "S",
+      "domain": "study_exam",
+      "sub_tags": {
+        "group_work": 1.0,
+        "campus_tool": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "study",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "E17",
+      "title": "口语是块肌肉：二十一天开练计划",
+      "summary": "别再收藏吃灰，每天三十分钟，照着练就完事。",
+      "body": "口语差的人有个共同点：输入远远大于输出。收藏了几十个教程，张嘴还是卡壳。口语是肌肉不是知识，得靠天天练。\n\n这套计划二十一天，每天三十分钟，分三段。前十天是敢说期：每天挑一段一分钟的生活场景，点外卖、问路、和室友争论都行，用目标语言把过程说出来，说得烂没关系，录下来听一遍。中间七天是模仿期：找一段语速正常的短视频，跟读二十遍，连读和语气都要像，练的是嘴部肌肉的记忆。最后四天是实战期：去语言角或者线上语伴房间，每天强制开口十五分钟，允许自己犯所有犯过的错。\n\n三条纪律：第一，不背单词表，生词只在场景里学；第二，不纠语法，先保证说完；第三，保留每天录音，第二十一天回头听第一天的，你会不敢相信是自己。二十一天之后，这套流程滚动用。二十一天结束，你会带着一套自己的练法继续走下去。开口这件事，从来没有准备好的一天，只有开始练的一天，而今天就是第二十一天里的第一天。",
+      "body_len": "L",
+      "domain": "study_exam",
+      "sub_tags": {
+        "language": 1.0,
+        "course": 0.4
+      },
+      "traits": {
+        "decisive": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "study",
+      "is_probe": false,
+      "review_status": "pending"
     }
   ],
   "probes": [

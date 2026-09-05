@@ -158,7 +158,11 @@ def simulate(lib, feeder, persona, n_screens=6, min_screens=3):
 
 
 def judge(s, persona):
-    """画像判对率：虚拟用户的真实 persona 已知，可直接比对（仿真独有指标）"""
+    """画像判对率：虚拟用户的真实 persona 已知，可直接比对（仿真独有指标）
+
+    注意这是宽松口径：意图特质"未展示"不扣分、无关轴的误报也不扣分，
+    只检查"没有说反话"。展示结论的真实精度另见 trait_precision。
+    """
     if not is_regular(persona):
         return None
     main, _, traits, _, _ = persona[:5]
@@ -177,10 +181,36 @@ def judge(s, persona):
     return True
 
 
+def trait_precision(s, persona):
+    """展示特质的真实精度（严格口径）：判对 /（判对+判错极+误报）
+
+    与 judge() 的区别：意图特质必须真的被展示才算对；用户没有意图的轴
+    被展示即计一次误报。这是"精准猜测"的真实口径。
+    返回 None 表示该 persona 没有可评判的意图特质。
+    """
+    if not is_regular(persona):
+        return None
+    _, _, traits, _, _ = persona[:5]
+    intended = {
+        axis: POLE_NAME[axis][0] if want > 0.5 else POLE_NAME[axis][1]
+        for axis, want in traits.items()
+        if abs(want - 0.5) >= 0.2
+    }
+    if not intended:
+        return None
+    got = s.trait_scores()
+    shown = {axis: t["pole"] for axis, t in got.items() if t["pole"]}
+    if not shown:
+        return 0.0
+    ok = sum(1 for a, pl in shown.items() if intended.get(a) == pl)
+    return ok / len(shown)
+
+
 def run(n, lib):
     feeder = Feeder(lib)
     tops, conv, offaxis, right, total_judged = [], 0, [], 0, 0
     rtops, rconv, roffaxis, rcount = [], 0, [], 0
+    precisions = []
     personas_seen = {}
     for i in range(n):
         p = PERSONAS[i % len(PERSONAS)]
@@ -194,6 +224,9 @@ def run(n, lib):
             rtops.append(score)
             rconv += 1 if s.converged() else 0
             roffaxis.append(sum(1 for t in s.trait_scores().values() if t["pole"]))
+            tp = trait_precision(s, p)
+            if tp is not None:
+                precisions.append(tp)
         v = judge(s, p)
         if v is not None:
             total_judged += 1
@@ -208,6 +241,7 @@ def run(n, lib):
         "regular_converge": rconv / rcount,
         "regular_off_axis": statistics.mean(roffaxis),
         "accuracy": (right / total_judged) if total_judged else 0.0,
+        "trait_precision": statistics.mean(precisions) if precisions else 0.0,
         "personas": personas_seen,
     }
 
@@ -218,7 +252,7 @@ def line(r, kappa):
 
     return (
         "κ=%.1f  常规 top1 中位数 %.3f %s  收敛率 %5.1f%% %s  "
-        "脱离中性轴 %.2f %s  判对率 %5.1f%% %s"
+        "脱离中性轴 %.2f %s  判对率 %5.1f%% %s  展示精度 %5.1f%%"
     ) % (
         kappa,
         r["regular_median_top"],
@@ -229,6 +263,7 @@ def line(r, kappa):
         mark(r["regular_off_axis"] >= 2.0),
         r["accuracy"] * 100,
         mark(r["accuracy"] >= 0.80),
+        r["trait_precision"] * 100,
     )
 
 
