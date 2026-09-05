@@ -38,14 +38,7 @@ html,body{height:100%;overflow:hidden;color:var(--fg);
 .standby .big em{font-style:normal;color:var(--ac)}
 .standby .sub{font-size:32px;color:var(--dim);margin-top:38px;letter-spacing:0}
 .standby .uni{margin-top:54px;font-size:22px;color:var(--gold);letter-spacing:.12em}
-/* 待机聚合页：数字是主视觉，两个比例/计数作为同一组证据收在下方。 */
-.aggregate{width:min(78vw,760px);display:flex;flex-direction:column;align-items:stretch;text-align:left}
-.aggregate .big{align-self:center;width:100%;text-align:center;font-size:72px;line-height:1.16}
-.aggregate .big em{display:inline-block;font-size:.42em;line-height:1.1;letter-spacing:.04em}
-.aggline{display:flex;align-items:baseline;justify-content:space-between;gap:28px;width:100%;padding:18px 4px 14px;
-  border-top:1px solid var(--line);font-size:25px;color:var(--dim);line-height:1.35}
-.aggline b{flex:none;color:var(--fg);font-size:38px;font-weight:800;font-variant-numeric:tabular-nums}
-.aggregate .uni{align-self:center}
+/* 待机聚合页已按需求移除（参与人数/认可率不再上大屏）。 */
 .promise{border:1px solid var(--line);border-radius:8px;padding:38px 62px;text-align:left;
   background:var(--panel)}
 .promise h3{font-size:34px;margin-bottom:26px;letter-spacing:0}
@@ -166,7 +159,6 @@ canvas.trend{width:100%;height:130px;flex:none}
 .hdr .pill{gap:var(--screen-sp-2)}.hdr .pill div{border-radius:calc(var(--u)*.55);padding:calc(var(--u)*.6) calc(var(--u)*1.4);font-size:clamp(13px,calc(var(--u)*1.55),31px)}
 .live{gap:calc(var(--u)*.55);font-size:clamp(14px,calc(var(--u)*1.65),33px)}.live .dot{width:calc(var(--u)*.7);height:calc(var(--u)*.7);box-shadow:0 0 0 calc(var(--u)*.28) rgba(79,139,224,.2)}
 .standby .big{font-size:var(--fs-display)}.standby .sub{font-size:clamp(18px,calc(var(--u)*2.8),56px);margin-top:calc(var(--u)*3.2)}.standby .uni{margin-top:calc(var(--u)*4.5);font-size:clamp(13px,calc(var(--u)*1.9),38px)}
-.aggregate{width:min(78vw,calc(var(--u)*62));gap:calc(var(--u)*.25)}.aggregate .big{font-size:clamp(38px,calc(var(--u)*6.4),128px);line-height:1.12}.aggregate .big em{font-size:.4em}.aggline{gap:calc(var(--u)*2);padding:calc(var(--u)*1.2) calc(var(--u)*.25) calc(var(--u)*.9);font-size:clamp(14px,calc(var(--u)*1.65),33px)}.aggline b{font-size:clamp(22px,calc(var(--u)*2.8),56px)}
 .promise{border-radius:var(--r-md);padding:calc(var(--u)*3.2) calc(var(--u)*5.2)}.promise h3{font-size:clamp(22px,calc(var(--u)*3),60px);margin-bottom:calc(var(--u)*2.1)}.promise div{font-size:clamp(16px,calc(var(--u)*2.5),50px)}.promise div b{min-width:calc(var(--u)*25.5)}.promise .last{margin-top:calc(var(--u)*2);font-size:clamp(16px,calc(var(--u)*2.5),50px)}
 .main{grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(var(--u)*1.25)}.col{gap:calc(var(--u)*1.1)}
 .pnl{border-radius:calc(var(--u)*.7);padding:calc(var(--u)*1.1) calc(var(--u)*1.25)}.pnl>h4{font-size:clamp(14px,calc(var(--u)*1.85),37px);margin-bottom:calc(var(--u)*.8)}
@@ -214,7 +206,7 @@ canvas.trend{height:calc(var(--u)*11)}.tr{margin-bottom:calc(var(--u)*1.2)}.tr .
 }
 
 /* 白卡投影：面板浮在纸灰底上 */
-.pnl,.ad,.tip,.peer,.promise,.aggregate{box-shadow:0 1px 2px rgba(24,38,66,.04),0 14px 40px -26px rgba(24,38,66,.35)}
+.pnl,.ad,.tip,.peer,.promise{box-shadow:0 1px 2px rgba(24,38,66,.04),0 14px 40px -26px rgba(24,38,66,.35)}
 </style>
 </head>
 <body>
@@ -247,7 +239,6 @@ const SB=[
   {big:'刷 <em>90 秒</em><br>看一份本次行为侧写',sub:'扫码体验 · 不用填任何信息'},
   {promise:1},
   {big:'90 秒<br><em>6 次点击</em><br>0 字输入',sub:'它没问过你任何问题'},
-  {agg:1},
 ];
 
 function hdr(s){
@@ -264,26 +255,18 @@ function hdr(s){
 
 function renderStandby(s){
   s=s||{};
-  const a=s.agg||{};
-  const sig=[sbIdx%SB.length,s.page||"",s.online||0,a.participants||0,
-    a.feedback_good_rate==null?"":a.feedback_good_rate,s.focus?1:0].join("|");
+  const sig=[sbIdx%SB.length,s.page||"",s.online||0,s.focus?1:0].join("|");
   /* SSE 每 200ms 会推一次状态；待机内容没有变化时不要反复重建 DOM，
      否则轮播文字会闪烁、读屏焦点也会被无端打断。 */
   if(standbyActive&&sig===standbySig)return;
   standbySig=sig;standbyActive=true;
   const p=SB[sbIdx%SB.length];
-  const aggParticipants=wholeNumber(a.participants);
-  const aggRate=a.feedback_good_rate==null?"—":pct(a.feedback_good_rate);
   const inner=p.promise
     ? '<div class="promise"><h3>本展台的隐私承诺</h3><div>'+
       '<div><b>本次只分析：</b>点击、停留和划过</div>'+
       '<div><b>不会读取：</b>身份、位置、设备和账号</div>'+
       '<div><b>体验数据：</b>2 小时后自动删除，也可在结果页立即删除</div></div></div>'
-    : p.agg
-      ? '<div class="aggregate"><div class="big">'+aggParticipants+' 人<br><em>已经参与</em></div>'+
-        '<div class="aggline">认为画像符合自己 <b>'+aggRate+'</b></div>'+
-        '<div class="uni">'+UNI+'</div></div>'
-      : '<div class="big">'+p.big+'</div><div class="sub">'+p.sub+'</div><div class="uni">'+UNI+'</div>';
+    : '<div class="big">'+p.big+'</div><div class="sub">'+p.sub+'</div><div class="uni">'+UNI+'</div>';
   document.getElementById("root").innerHTML=hdr(s)+'<div class="standby">'+inner+'</div>';
 }
 setInterval(()=>{sbIdx++;if(!STATE||STATE.page==="standby"||!STATE.focus)renderStandby(STATE||{online:0});},7000);
