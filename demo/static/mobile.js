@@ -117,6 +117,14 @@ function unlockModalBackground() {
   MODAL_LOCK.viewScrollTop = 0;
   document.documentElement.classList.remove("modal-lock");
   document.body.classList.remove("modal-lock");
+  /* 布局保留后，锁定/解锁不再产生几何变化，IntersectionObserver 不会
+     自动重报；解锁时重挂一次曝光与翻页观察，让锁定期间位于视口内的
+     卡片/哨兵重新获得判定机会（此前靠 display:none 的拆建顺带完成）。 */
+  document.querySelectorAll("#feed .card, #findFeed .card").forEach(el => { IO.unobserve(el); IO.observe(el); });
+  const more = document.getElementById("more");
+  if (more && SID && activeView === "home" && !finishing && !ended && !screenRetryPending) {
+    MORE_IO.unobserve(more); MORE_IO.observe(more);
+  }
 }
 function modalOpen(el, focusEl) {
   if (!el) return;
@@ -151,8 +159,8 @@ function modalClose(el, restore = true) {
     el._trigger.setAttribute("aria-expanded", "false");
     el._trigger = null;
   }
-  /* 关闭动画期间继续保持 body.modal-lock。#app 会保持 display:none，
-     因而 reader/sheet 的退场帧不会与底下信息流并排出现。 */
+  /* 关闭动画期间继续保持 body.modal-lock（只隔离输入，#app 布局保留），
+     退场帧由不透明弹层盖住首页，等待窗口里信息流始终可见。 */
   let unlockAfter = null;
   if (wasOpen && el._modalLocked) {
     const cs = getComputedStyle(el);
