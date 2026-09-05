@@ -5,12 +5,12 @@
    图标一律 Lucide（static/lucide.js），全站无表情符号。 */
 
 :root{
-  --ink:#0a1322; --ink-2:#0f1b2e; --ink-3:#15243b; --ink-4:#1e304c; --ink-5:#2a3f60;
-  --fg:#f3f5f9; --fg-2:#c5cddb; --mute:#8391a8; --mute-2:#54627a; --line:rgba(255,255,255,.09);
+  --ink:#f4f6fa; --ink-2:#ffffff; --ink-3:#edf1f7; --ink-4:#dce3ed; --ink-5:#c5d0e0;
+  --fg:#182642; --fg-2:#43536d; --mute:#64748e; --mute-2:#93a0b4; --line:rgba(24,38,66,.10);
   --paper:#f2f4f8; --paper-2:#ffffff; --paper-3:#e6eaf1;
   --pfg:#0f1b2e; --psub:#5c6b82; --pdim:#93a0b4; --pline:#e0e5ee;
   --ysu:#1e4d99; --ysu-2:#4f8be0; --ysu-ink:#163a73; --ysu-soft:rgba(79,139,224,.18);
-  --gold:#c9a24a; --green:#2fb673; --danger:#c8413a;
+  --gold:#a97e2c; --green:#2fb673; --danger:#c8413a;
   /* --ac 是"当前底色上的强调色"：纸上用校色原值，墨上换亮一档的燕大蓝以保证可读；
      --ac-btn 是白字按钮的底色，两个世界共用一个中间值 */
   --ac:var(--ysu); --ac-btn:#2a62bd;
@@ -22,8 +22,8 @@
   --fs-2xs:10px; --fs-xs:11px; --fs-sm:12.5px; --fs-md:14px; --fs-lg:16.5px; --fs-xl:20px; --fs-2xl:26px;
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-7:32px;
   --r-xs:5px; --r-sm:10px; --r-md:14px; --r-lg:18px; --r-xl:20px; --r-pill:999px;
-  --sh-card:0 1px 0 rgba(17,17,20,.03),0 6px 18px -14px rgba(17,17,20,.25);
-  --sh-float:0 18px 60px rgba(5,12,24,.28); --sh-focus:0 0 0 3px rgba(79,139,224,.28);
+  --sh-card:0 1px 0 rgba(17,17,20,.03),0 6px 18px -14px rgba(24,38,66,.30);
+  --sh-float:0 18px 50px rgba(24,38,66,.16); --sh-focus:0 0 0 3px rgba(79,139,224,.28);
   --dur-fast:.16s; --dur-base:.25s; --dur-slow:.6s;
   --safe-b:env(safe-area-inset-bottom,0px); --safe-t:env(safe-area-inset-top,0px);
 }
@@ -621,3 +621,34 @@ body:not(.modal-lock) .page-state:not(.on){display:none!important;}
   .sheet{left:50%;right:auto;width:min(460px,100vw);transform:translate(-50%,-18px);}
   .sheet.on{transform:translate(-50%,0);}
 }
+
+/* ═══════════════ 墨世界（浅色）设计补充（取向：纸面数据报告） ═══════════════
+   纸世界（信息流）不变；告知页/结果页为"白卡 + 墨字 + 燕大蓝"。
+   刻意保留三处深色锚点制造节奏：主按钮、结束卡、吐司提示。 */
+
+/* 强调色方向反转：浅底上用深一档校色蓝（原版深底用亮一档） */
+#gate,#veil,#result,.page-state,.endcard,.toast{--ac:var(--ysu)}
+
+/* 告知页：CTA 是页面唯一的实心蓝块，3s 阅读进度用更深的蓝扫过 */
+.cta{background:var(--ac-btn);color:#fff;box-shadow:0 12px 26px -14px rgba(42,98,189,.60)}
+.cta .fill{background:#1e4d99}
+.cta:disabled{color:rgba(255,255,255,.72)}
+.sw{background:#c9d3e2}
+
+/* 结束卡：信息流收尾的深色锚点，明确"体验到此结束" */
+.endcard{background:#182642;color:#f3f5f9;box-shadow:0 16px 38px -20px rgba(24,38,66,.50)}
+.endcard::before{border-color:rgba(255,255,255,.14)}
+.endcard::after{border-color:rgba(255,255,255,.22)}
+.endcard .k{color:#8fb4ee}
+.endcard p{color:#c5cddb}
+.endcard .again{color:#8ea0bd}
+.endcard .again:active{background:rgba(255,255,255,.08)}
+
+/* 结果页：白卡浮在纸灰底上，投影极轻 */
+.pnl,.fb,.cross .ev3,.bub .ph,.mis div,.act,.gone .box,.rbtn{
+  box-shadow:0 1px 2px rgba(24,38,66,.04),0 10px 28px -22px rgba(24,38,66,.28)}
+.adcard{border:1px solid var(--pline)}
+.bub .ph.after::after{background:linear-gradient(180deg,transparent 40%,rgba(24,38,66,.10))}
+/* 结果页吸顶导航：深色玻璃翻成白玻璃 */
+.result-anchors{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line)}
+.result-anchors button.on{background:var(--ink-3)}

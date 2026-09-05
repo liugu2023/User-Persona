@@ -256,14 +256,14 @@ const FX = (() => {
     // 大环：像扫描仪的刻度盘，极慢旋转
     const cx = W * .82, cy = H * .18, R = Math.min(W, H) * .62;
     g.save(); g.translate(cx, cy); g.rotate(t * .02);
-    g.strokeStyle = "rgba(255,255,255,.05)"; g.lineWidth = 1; g.beginPath(); g.arc(0, 0, R, 0, 7); g.stroke();
+    g.strokeStyle = "rgba(22,35,58,.07)"; g.lineWidth = 1; g.beginPath(); g.arc(0, 0, R, 0, 7); g.stroke();
     for (let i = 0; i < 90; i++) { const a = i / 90 * Math.PI * 2, L = i % 15 ? 5 : 12;
       g.beginPath(); g.moveTo(Math.cos(a) * (R - L), Math.sin(a) * (R - L)); g.lineTo(Math.cos(a) * R, Math.sin(a) * R); g.stroke(); }
     g.restore();
     for (const p of traces) {
       p.x += Math.cos(p.a) * p.v; p.y += Math.sin(p.a) * p.v; p.a += (Math.random() - .5) * .02;
       if (p.x < -p.l || p.x > W + p.l || p.y < -p.l || p.y > H + p.l) { p.x = Math.random() * W; p.y = Math.random() * H; }
-      g.strokeStyle = "rgba(255,255,255," + p.o + ")"; g.lineWidth = p.w; g.beginPath();
+      g.strokeStyle = "rgba(22,35,58," + p.o + ")"; g.lineWidth = p.w; g.beginPath();
       g.moveTo(p.x, p.y); g.lineTo(p.x - Math.cos(p.a) * p.l, p.y - Math.sin(p.a) * p.l); g.stroke();
     }
     // 删除时的碎屑

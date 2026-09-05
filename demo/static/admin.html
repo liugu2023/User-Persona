@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>后台 · 引导员遥控</title>
 <style>
-:root{--bg:#0b1526;--card:#132038;--line:#243654;--fg:#f3f5f9;--dim:#8a97ad;--accent:#4f8be0;--gold:#c9a24a;--danger:#c8413a;
+:root{--bg:#f4f6fa;--card:#ffffff;--line:rgba(15,27,46,.12);--fg:#16233a;--dim:#5f6e86;--accent:#1e4d99;--gold:#8a6a1f;--danger:#c8413a;
   --u:clamp(9px,1.05vh,20px);--fs-sm:clamp(12px,calc(var(--u)*1),17px);--fs-md:clamp(14px,calc(var(--u)*1.35),24px);--fs-lg:clamp(20px,calc(var(--u)*2.2),42px);
   --sp-1:calc(var(--u)*.5);--sp-2:var(--u);--sp-3:calc(var(--u)*1.5);--sp-4:calc(var(--u)*2);
   --r-sm:calc(var(--u)*.5);--r-md:calc(var(--u)*.75);--r-lg:calc(var(--u)*1.1);--sh-panel:0 calc(var(--u)*1.2) calc(var(--u)*3.4) rgba(5,12,24,.28)}
@@ -37,10 +37,10 @@ button.danger{color:var(--danger);border-color:#5a2d33}
 .kap input{flex:1}
 .kap b{color:var(--accent);min-width:44px;text-align:right}
 .note{color:#5f6d86;font-size:12px;margin-top:8px;line-height:1.8}
-.auth-card{max-width:460px;margin:clamp(48px,14vh,160px) auto 0;background:rgba(19,32,56,.92);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 18px 60px rgba(5,12,24,.28)}
+.auth-card{max-width:460px;margin:clamp(48px,14vh,160px) auto 0;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 18px 60px rgba(5,12,24,.28)}
 .auth-card h1{font-size:24px;margin-bottom:6px}.auth-card p{color:var(--dim);font-size:13px;line-height:1.7}
 .auth-card form{display:grid;gap:10px;margin-top:20px}.auth-card label{font-size:12px;color:var(--dim)}
-.auth-card input{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;background:#0d192c;color:var(--fg);padding:0 13px;font:inherit;font-size:16px;outline:none}
+.auth-card input{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;background:#f4f6fa;color:var(--fg);padding:0 13px;font:inherit;font-size:16px;outline:none}
 .auth-card input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,139,224,.16)}
 .auth-card button{min-height:48px;background:var(--accent);border-color:var(--accent);color:#fff;margin-top:4px}
 .auth-error{min-height:1.6em;color:var(--danger)!important;font-size:12px!important}.auth-note{margin-top:14px;color:#5f6d86!important;font-size:11px!important}
@@ -55,13 +55,13 @@ body{max-width:none;min-height:100vh;padding:clamp(20px,3vw,48px);background:
 .layout{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,.95fr);gap:clamp(18px,2.4vw,36px);align-items:start}
 .left-col,.right-col{display:grid;gap:14px;align-content:start}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.section-head h2,.section-head h3{margin:0;color:var(--fg);font-size:16px;font-weight:700}.section-head span{font-size:11px;color:var(--dim)}
 .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0}.stats div{min-height:86px;display:flex;flex-direction:column;justify-content:center;border-radius:12px;padding:12px 8px}.stats b{font-size:clamp(22px,2.2vw,34px)}.stats span{font-size:11px}
-.status-card,.control-card,.sessions-card,.danger-zone{background:rgba(19,32,56,.88);border:1px solid var(--line);border-radius:14px;padding:16px}.status-card h3,.control-card h3,.danger-zone h3{margin:0 0 10px;font-size:13px;color:var(--dim);font-weight:600}.status-card .note+.note{margin-top:5px}
+.status-card,.control-card,.sessions-card,.danger-zone{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:14px;padding:16px}.status-card h3,.control-card h3,.danger-zone h3{margin:0 0 10px;font-size:13px;color:var(--dim);font-weight:600}.status-card .note+.note{margin-top:5px}
 .control-card .grid{gap:10px}.control-card button{min-height:50px}.control-card h3 small{font-size:11px;font-weight:400;color:var(--dim)}
-.kap{padding:12px;background:rgba(0,0,0,.14);border-radius:10px}.kap button{padding:10px 16px;font-size:14px;min-height:40px}.kap input{accent-color:var(--accent)}
+.kap{padding:12px;background:rgba(15,27,46,.04);border-radius:10px}.kap button{padding:10px 16px;font-size:14px;min-height:40px}.kap input{accent-color:var(--accent)}
 .sessions-card{min-height:180px}.sessions-card .section-head{margin-bottom:10px}.sessions-card #sessions{max-height:calc(100vh - 430px);overflow:auto;padding-right:2px}
-.sess{border-radius:10px;padding:12px;margin-bottom:8px;background:rgba(255,255,255,.035)}.sess:last-child{margin-bottom:0}.sess .r button{min-height:42px;padding:9px 13px}.sess .r{gap:6px}
-.danger-zone{border-color:rgba(200,65,58,.24);background:rgba(71,28,38,.22)}.danger-zone .danger{width:100%;min-height:48px;background:rgba(90,45,51,.22)}
-.danger-list-head{margin:16px 0 6px;font-size:11px;color:var(--dim)}.danger-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid rgba(200,65,58,.12);font-size:13px;color:#d5b8bc}.danger-row .danger{width:auto;min-height:38px;padding:8px 13px;font-size:12px}
+.sess{border-radius:10px;padding:12px;margin-bottom:8px;background:rgba(15,27,46,.03)}.sess:last-child{margin-bottom:0}.sess .r button{min-height:42px;padding:9px 13px}.sess .r{gap:6px}
+.danger-zone{border-color:rgba(200,65,58,.24);background:rgba(200,65,58,.08)}.danger-zone .danger{width:100%;min-height:48px;background:rgba(200,65,58,.10)}
+.danger-list-head{margin:16px 0 6px;font-size:11px;color:var(--dim)}.danger-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid rgba(200,65,58,.12);font-size:13px;color:#8a4a47}.danger-row .danger{width:auto;min-height:38px;padding:8px 13px;font-size:12px}
 @media (max-width:720px){
   body{padding:18px;overflow-x:hidden}.page-head{flex-direction:column;gap:12px;margin-bottom:20px}.page-head .live-label{align-self:flex-start}.live-label{font-size:11px;padding:7px 9px}.layout{display:block}.left-col,.right-col{gap:12px}.right-col{margin-top:18px}.stats{gap:7px}.stats div{min-height:74px;padding:9px 5px}.stats b{font-size:22px}.sessions-card #sessions{max-height:none}.sess>div:first-child{min-width:0;overflow-wrap:anywhere}.status-card,.control-card,.sessions-card,.danger-zone{padding:14px}
 }
@@ -70,6 +70,9 @@ body{max-width:none;min-height:100vh;padding:clamp(20px,3vw,48px);background:
   .sess{align-items:flex-start}.sess .r{flex:none}.danger-row span{min-width:0;overflow-wrap:anywhere}
 }
 @media (max-width:350px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 白卡投影：面板浮在纸灰底上 */
+.auth-card,.status-card,.control-card,.sessions-card,.danger-zone,.stats div,.sess{box-shadow:0 1px 2px rgba(24,38,66,.04),0 10px 26px -22px rgba(24,38,66,.28)}
 </style>
 </head>
 <body>

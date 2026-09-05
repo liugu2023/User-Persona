@@ -199,10 +199,10 @@ function drawOrbit(cv, order, dmap, t) {
   const ang = i => -Math.PI / 2 + i * 2 * Math.PI / n;
   for (let r = 1; r <= 4; r++) {
     g.beginPath(); g.arc(cx, cy, R * r / 4, 0, 7);
-    g.setLineDash(r === 4 ? [] : [2, 5]); g.strokeStyle = r === 4 ? "rgba(255,255,255,.14)" : "rgba(255,255,255,.07)"; g.lineWidth = 1; g.stroke();
+    g.setLineDash(r === 4 ? [] : [2, 5]); g.strokeStyle = r === 4 ? "rgba(22,35,58,.16)" : "rgba(22,35,58,.09)"; g.lineWidth = 1; g.stroke();
   }
   g.setLineDash([]);
-  for (let i = 0; i < n; i++) { const a = ang(i); g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R); g.strokeStyle = "rgba(255,255,255,.06)"; g.stroke(); }
+  for (let i = 0; i < n; i++) { const a = ang(i); g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R); g.strokeStyle = "rgba(22,35,58,.08)"; g.stroke(); }
   const pts = order.map((d, i) => { const v = dmap[d.domain]; const s = (v ? v.score : 0) * t; const a = ang(i);
     return { x: cx + Math.cos(a) * R * s, y: cy + Math.sin(a) * R * s, s, v, a }; });
   g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p.x, p.y) : g.moveTo(p.x, p.y)); g.closePath();
@@ -235,7 +235,7 @@ function drawSpark(cv, hist, t) {
   const tmax = Math.max(1, pts[pts.length - 1].t);
   const mono = getComputedStyle(document.body).getPropertyValue("--mono");
   g.font = "10px " + mono; g.fillStyle = PAL.mute;
-  [0, .5, 1].forEach(v => { const y = pad.t + h * (1 - v); g.strokeStyle = "rgba(255,255,255,.07)"; g.setLineDash([2, 4]); g.beginPath(); g.moveTo(pad.l, y); g.lineTo(W - pad.r, y); g.stroke(); g.setLineDash([]); g.textAlign = "right"; g.fillText(Math.round(v * 100), pad.l - 7, y + 3); });
+  [0, .5, 1].forEach(v => { const y = pad.t + h * (1 - v); g.strokeStyle = "rgba(22,35,58,.09)"; g.setLineDash([2, 4]); g.beginPath(); g.moveTo(pad.l, y); g.lineTo(W - pad.r, y); g.stroke(); g.setLineDash([]); g.textAlign = "right"; g.fillText(Math.round(v * 100), pad.l - 7, y + 3); });
   g.textAlign = "left"; g.fillText("0s", pad.l, H - 5); g.textAlign = "right"; g.fillText(Math.round(tmax) + "s", W - pad.r, H - 5);
   const xy = p => [pad.l + w * (p.t / tmax), pad.t + h * (1 - p.s)];
   const upto = Math.max(1, Math.round(pts.length * t));
@@ -246,7 +246,7 @@ function drawSpark(cv, hist, t) {
   g.fillStyle = gr; g.fill();
   g.beginPath(); vis.forEach((p, i) => { const [x, y] = xy(p); i ? g.lineTo(x, y) : g.moveTo(x, y); });
   g.strokeStyle = PAL.ac; g.lineWidth = 1.8; g.lineJoin = "round"; g.stroke();
-  g.beginPath(); g.arc(L[0], L[1], 3.5, 0, 7); g.fillStyle = "#fff"; g.fill();
+  g.beginPath(); g.arc(L[0], L[1], 3.5, 0, 7); g.fillStyle = "#16233a"; g.fill();
 }
 
 /* ─────────────────────────── 结果页拼装 ─────────────────────────── */
@@ -624,7 +624,7 @@ function shareCard(p) {
   const g = cv.getContext("2d");
   const sans = getComputedStyle(document.body).getPropertyValue("--sans"), mono = getComputedStyle(document.body).getPropertyValue("--mono"), serif = getComputedStyle(document.body).getPropertyValue("--serif");
   g.fillStyle = PAL.ink; g.fillRect(0, 0, W, H);
-  g.strokeStyle = "rgba(255,255,255,.06)"; g.lineWidth = 1; g.beginPath(); g.arc(W * .85, 190, 380, 0, 7); g.stroke();
+  g.strokeStyle = "rgba(22,35,58,.08)"; g.lineWidth = 1; g.beginPath(); g.arc(W * .85, 190, 380, 0, 7); g.stroke();
   g.beginPath(); g.arc(W * .85, 190, 300, 0, 7); g.setLineDash([3, 7]); g.stroke(); g.setLineDash([]);
   g.fillStyle = PAL.ac; g.fillRect(60, 78, 14, 14);
   g.fillStyle = PAL.mute; g.font = "22px " + mono; g.textBaseline = "alphabetic"; g.fillText("FEED KNOWS YOU  ·  信息流知道你", 88, 92);
@@ -644,7 +644,7 @@ function shareCard(p) {
     g.fillStyle = i ? PAL.fg2 : PAL.ac; g.fillRect(220, yy - 14, 400 * v.score, 6);
     g.fillStyle = PAL.fg; g.font = "700 24px " + mono; g.textAlign = "right"; g.fillText(pct(v.score), 690, yy); g.textAlign = "left";
   });
-  g.fillStyle = "rgba(255,255,255,.1)"; g.fillRect(60, 1040, 630, 1);
+  g.fillStyle = "rgba(22,35,58,.12)"; g.fillRect(60, 1040, 630, 1);
   g.fillStyle = PAL.fg; g.font = "600 38px " + serif;
   wrapText(g, "数据画像不是你本人，只是算法眼中的你。", 60, 1112, 630, 54);
   g.fillStyle = PAL.mute; g.font = "22px " + mono;

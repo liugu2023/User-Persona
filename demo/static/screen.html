@@ -6,9 +6,9 @@
 <title>信息流知道你 · 大屏</title>
 <style>
 :root{
-  /* 与手机端同一套燕大蓝 / 金，深色底带藏青（展厅深色环境，避免大面积浅色反光） */
-  --bg:#0b1526; --bg2:#101c31; --panel:#132038; --line:#243654;
-  --fg:#f3f5f9; --dim:#8a97ad; --ac:#4f8be0; --ac2:#4f8be0; --ac-btn:#2a62bd; --gold:#c9a24a;
+  /* 浅色主题：底为纸灰白、文字深藏青；强调色用深一档的校色蓝保证对比度 */
+  --bg:#f4f6fa; --bg2:#e4e9f1; --panel:#ffffff; --line:rgba(15,27,46,.12);
+  --fg:#16233a; --dim:#5f6e86; --ac:#4f8be0; --ac2:#1e4d99; --ac-btn:#2a62bd; --gold:#8a6a1f;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;color:var(--fg);
@@ -25,7 +25,7 @@ html,body{height:100%;overflow:hidden;color:var(--fg);
 .hdr .slogan{font-size:22px;color:var(--dim);letter-spacing:0}
 .hdr .uni{font-size:17px;color:var(--gold);letter-spacing:.08em;padding-left:20px;border-left:1px solid var(--line)}
 .hdr .pill{margin-left:auto;display:flex;gap:12px}
-.hdr .pill div{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:8px;
+.hdr .pill div{background:rgba(15,27,46,.04);border:1px solid var(--line);border-radius:8px;
   padding:9px 22px;font-size:20px;color:var(--dim)}
 .hdr .pill b{color:var(--fg);font-weight:700}
 .live{display:flex;align-items:center;gap:9px;font-size:22px;color:var(--fg)}
@@ -49,7 +49,7 @@ html,body{height:100%;overflow:hidden;color:var(--fg);
 .promise{border:1px solid var(--line);border-radius:8px;padding:38px 62px;text-align:left;
   background:var(--panel)}
 .promise h3{font-size:34px;margin-bottom:26px;letter-spacing:0}
-.promise div{font-size:29px;line-height:2.05;color:#dfe5ef}
+.promise div{font-size:29px;line-height:2.05;color:#3d4d68}
 .promise div b{color:var(--fg);display:inline-block;min-width:290px}
 .promise .last{margin-top:24px;font-size:29px;color:var(--gold)}
 
@@ -65,9 +65,9 @@ html,body{height:100%;overflow:hidden;color:var(--fg);
 .who .code{font-size:46px;font-weight:900;letter-spacing:0;
   color:var(--fg);overflow-wrap:anywhere}
 .who .persona{font-size:30px;font-weight:700;margin-top:6px;color:var(--ac2)}
-.who .sum{font-size:21px;color:#aab4c6;line-height:1.7;margin-top:10px}
+.who .sum{font-size:21px;color:#5f6e86;line-height:1.7;margin-top:10px}
 .who .kpi{display:flex;gap:10px;margin-top:16px}
-.who .kpi div{flex:1;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:8px;
+.who .kpi div{flex:1;background:rgba(15,27,46,.05);border:1px solid var(--line);border-radius:8px;
   padding:10px 4px;text-align:center}
 .who .kpi b{display:block;font-size:26px;color:var(--fg)}
 .who .kpi span{font-size:14px;color:var(--dim)}
@@ -80,7 +80,7 @@ canvas.trend{width:100%;height:130px;flex:none}
 .tr .h u{text-decoration:none;font-size:15px;color:var(--dim);border:1px solid var(--line);
   border-radius:5px;padding:1px 8px}
 .tr .h i{margin-left:auto;font-style:normal;font-size:26px;font-weight:800;color:var(--fg)}
-.bar{height:10px;border-radius:6px;background:#1e304c;margin:9px 0 5px;overflow:hidden}
+.bar{height:10px;border-radius:6px;background:#d9e0ea;margin:9px 0 5px;overflow:hidden}
 .bar>u{display:block;height:100%;border-radius:6px;transition:width .4s ease;
   background:var(--ac)}
 .bar.dash>u{background:repeating-linear-gradient(90deg,var(--gold) 0 9px,transparent 9px 16px)}
@@ -90,7 +90,7 @@ canvas.trend{width:100%;height:130px;flex:none}
 .live-empty{color:var(--dim);font-size:20px;line-height:1.7}
 
 .evs{overflow:hidden;flex:1}
-.ev{display:flex;gap:13px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.ev{display:flex;gap:13px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(15,27,46,.08)}
 .ev:last-child{border-bottom:0}
 .ev .th{width:74px;height:52px;flex:none;border-radius:9px;position:relative;overflow:hidden}
 .ev .th span{position:absolute;inset:0;display:grid;place-items:center;font-size:24px;font-weight:900;
@@ -98,46 +98,46 @@ canvas.trend{width:100%;height:130px;flex:none}
 .ev .tx{flex:1;min-width:0}
 .ev .tx b{display:block;font-size:20px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ev .tx span{font-size:16px;color:var(--dim)}
-.ev .tx span em{font-style:normal;color:#aab4c6}
+.ev .tx span em{font-style:normal;color:#5f6e86}
 .ev .act{flex:none;font-size:17px;color:var(--ac2);border:1px solid rgba(79,139,224,.28);
   border-radius:6px;padding:3px 10px}
 .evfoot{flex:none;margin-top:10px;font-size:17px;color:var(--dim);text-align:center}
 
-.ad{border:1px solid rgba(255,255,255,.14);border-radius:8px;overflow:hidden;flex:none;
+.ad{border:1px solid rgba(15,27,46,.15);border-radius:8px;overflow:hidden;flex:none;
   background:var(--panel)}
 .ad .tp{padding:14px 18px 0;display:flex;gap:10px;align-items:center}
 .ad .tp .bd{font-size:14px;color:var(--gold);border:1px solid rgba(201,162,74,.45);border-radius:5px;padding:2px 9px}
 .ad .tp .meta{font-size:15px;color:var(--dim)}
 .ad h5{margin:10px 18px 0;font-size:26px;font-weight:800;line-height:1.35}
-.ad .b{margin:8px 18px 14px;font-size:17px;color:#aab4c6;line-height:1.6}
-.ad .why{background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.08);padding:13px 18px}
+.ad .b{margin:8px 18px 14px;font-size:17px;color:#5f6e86;line-height:1.6}
+.ad .why{background:rgba(15,27,46,.04);border-top:1px solid rgba(15,27,46,.08);padding:13px 18px}
 .ad .why p{font-size:17px;color:#dfe5ef;margin:6px 0;display:flex;gap:8px}
 .ad .why p::before{content:"";width:18px;height:18px;flex:none;margin-top:2px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f8be0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center/contain}
-.tip{border:1px solid rgba(201,162,74,.35);border-radius:8px;padding:16px 18px;flex:none;
-  background:#1b1f22}
+.tip{border:1px solid rgba(201,162,74,.45);border-radius:8px;padding:16px 18px;flex:none;
+  background:#f9f3e1}
 .tip h5{font-size:20px;color:var(--gold);margin-bottom:8px;letter-spacing:0}
-.tip p{font-size:17px;color:#e2d8bf;line-height:1.8}
+.tip p{font-size:17px;color:#6b5518;line-height:1.8}
 
 .peers{display:flex;gap:12px;flex:none;margin-top:16px}
-.peer{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:8px;padding:11px 14px}
+.peer{flex:1;background:rgba(15,27,46,.04);border:1px solid var(--line);border-radius:8px;padding:11px 14px}
 .peer b{font-size:20px;display:block}
 .peer span{font-size:15px;color:var(--dim)}
 
 /* 跨域高光 */
 #hi{position:fixed;inset:0;z-index:99;display:none;flex-direction:column;justify-content:center;align-items:center;
-  background:#08101e}
+  background:#eef1f6}
 #hi.on{display:flex}
 #hi .lead{font-size:42px;color:var(--dim);letter-spacing:0}
 #hi .three{display:flex;gap:36px;margin:52px 0 34px}
-#hi .b{width:330px;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:28px 24px;text-align:center;
+#hi .b{width:330px;border:1px solid rgba(15,27,46,.15);border-radius:8px;padding:28px 24px;text-align:center;
   background:var(--panel);
   opacity:0;transform:translateY(26px);transition:all .55s cubic-bezier(.2,.9,.3,1)}
 #hi .b.show{opacity:1;transform:none}
 #hi .b .d{font-size:24px;color:var(--ac2);letter-spacing:0}
 #hi .b .t{font-size:26px;line-height:1.5;margin:16px 0;height:3em;overflow:hidden}
 #hi .b .a{font-size:22px;color:var(--dim)}
-#hi .arrow{font-size:44px;color:#3a4d6e;opacity:0;transition:opacity .5s}
+#hi .arrow{font-size:44px;color:#b6c2d6;opacity:0;transition:opacity .5s}
 #hi .arrow.show{opacity:1}
 #hi .mid{font-size:42px;color:var(--dim);letter-spacing:0;margin:26px 0;opacity:0;transition:opacity .6s}
 #hi .mid.show{opacity:1}
@@ -212,6 +212,9 @@ canvas.trend{height:calc(var(--u)*11)}.tr{margin-bottom:calc(var(--u)*1.2)}.tr .
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
 }
+
+/* 白卡投影：面板浮在纸灰底上 */
+.pnl,.ad,.tip,.peer,.promise,.aggregate{box-shadow:0 1px 2px rgba(24,38,66,.04),0 14px 40px -26px rgba(24,38,66,.35)}
 </style>
 </head>
 <body>
@@ -228,7 +231,7 @@ canvas.trend{height:calc(var(--u)*11)}.tr{margin-bottom:calc(var(--u)*1.2)}.tr .
 <script>
   let STATE=null,lastHi="",hiBusy=false,hiTimers=[],sbIdx=0,standbySig="",standbyActive=false,liveSig="",stream=null,reconnectTimer=0,resizeTimer=0;
 const REDUCED=typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-const AC="#4f8be0",AC_RGB="79,139,224",GOLD="#c9a24a",FG="#f3f5f9",FG2="#dfe5ef",DIM="#8a97ad";   // 与 :root 一致
+const AC="#4f8be0",AC_RGB="79,139,224",GOLD="#8a6a1f",FG="#16233a",FG2="#3d4d68",DIM="#5f6e86";   // 浅色版：与 :root 一致
 const UNI="燕山大学 · 2026 年国家网络安全宣传周";
 /* 与手机端 mobile.js 的 HUE 表同源：同一兴趣域在两屏上色相一致 */
 const HUE={tech:214,game:268,life:26,sport:172,av:342,culture:42,study:200,social:96};
@@ -304,9 +307,9 @@ function radar(cv,items){
   for(let r=1;r<=4;r++){g.beginPath();
     for(let i=0;i<n;i++){const a=ang(i),rr=R*r/4;
       i?g.lineTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr):g.moveTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr);}
-    g.closePath();g.strokeStyle="rgba(255,255,255,"+(r===4?.16:.07)+")";g.lineWidth=1.4;g.stroke();}
+    g.closePath();g.strokeStyle="rgba(15,27,46,"+(r===4?.18:.10)+")";g.lineWidth=1.4;g.stroke();}
   for(let i=0;i<n;i++){const a=ang(i);g.beginPath();g.moveTo(cx,cy);
-    g.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);g.strokeStyle="rgba(255,255,255,.08)";g.stroke();}
+    g.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);g.strokeStyle="rgba(15,27,46,.09)";g.stroke();}
   g.beginPath();
   items.forEach((it,i)=>{const a=ang(i),rr=R*Math.max(.06,it.v);
     i?g.lineTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr):g.moveTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr);});
@@ -335,7 +338,7 @@ function trend(cv,pts){
   const tmax=Math.max(1,pts[pts.length-1].t);
   g.font=fontSize+"px sans-serif";g.fillStyle=DIM;
   [0,.5,1].forEach(v=>{const y=pad.t+h*(1-v);
-    g.strokeStyle="rgba(255,255,255,.08)";g.beginPath();g.moveTo(pad.l,y);g.lineTo(W-pad.r,y);g.stroke();
+    g.strokeStyle="rgba(15,27,46,.09)";g.beginPath();g.moveTo(pad.l,y);g.lineTo(W-pad.r,y);g.stroke();
     g.textAlign="right";g.fillText(Math.round(v*100),pad.l-8,y+5);});
   g.textAlign="center";g.fillText("0s",pad.l,H-6);g.fillText(Math.round(tmax)+"s",W-pad.r,H-6);
   const xy=p=>[pad.l+w*(p.t/tmax),pad.t+h*(1-p.s)];
