@@ -1167,8 +1167,11 @@ async function openContent(cid, suppliedInfo) {
   document.getElementById("rtitle").textContent = c.title;
   document.getElementById("rauthor").textContent = publisher(c);
   document.getElementById("rtime").textContent = (1 + hash(cid) % 59) + " 分钟前";
-  document.getElementById("rkick").textContent = (c.body_len === "L" ? "深度长文" : "速览") + " · 阅读约 " +
-    (c.body_len === "L" ? "1 分钟" : "30 秒");
+  /* 阅读时长按服务端下发的 read_sec（正文实际字数 / 400 字每分钟）计算，
+     不再对 S/L 一刀切。 */
+  const rt = Number(c.read_sec) || (c.body_len === "L" ? 60 : 30);
+  const rtText = rt < 60 ? rt + " 秒" : "约 " + Math.round(rt / 60) + " 分钟";
+  document.getElementById("rkick").textContent = (c.body_len === "L" ? "深度长文" : "速览") + " · 阅读约 " + rtText;
   document.getElementById("rbody").innerHTML = skeleton(0) + '<span style="color:var(--pdim)">加载中</span>';
   rprog.style.transform = "scaleX(0)";
   reader.scrollTop = 0; modalOpen(reader, document.getElementById("rback")); flush();

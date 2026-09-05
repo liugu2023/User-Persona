@@ -105,6 +105,13 @@ foreach ($f in $files) {
     foreach ($w in $sensitiveWords) { if ($text.Contains($w)) { $errs += "敏感词：$w" } }
     foreach ($w in $runtimeBlockedPhrases) { if ($text.Contains($w)) { $errs += "组合词拦截：$w" } }
 
+    # 5.5) 真实感断言：正文必须有具体数字；禁 AI 腔套话；标题不短于 8 字。
+    if ($text -notmatch '[0-9一二两三四五六七八九十百千]') { $errs += '正文缺少具体数字' }
+    foreach ($w in @('值得关注','综合来看','综上所述','总而言之','众所周知')) {
+      if ($text.Contains($w)) { $errs += "套话：$w" }
+    }
+    if ((Get-VisibleLen $it.title) -lt 8) { $errs += '标题不足 8 字' }
+
     if ($errs.Count -gt 0) { $errors++; $report.Add("  ✗ $id ($len 字/$($it.body_len)): $($errs -join '；')") }
     else { $report.Add("  ✓ $id ($len 字/$($it.body_len))") }
   }

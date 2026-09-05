@@ -609,12 +609,17 @@ class Library:
 
     def card(self, c):
         """投放给手机端的卡片视图（不含正文，点击后再取）"""
+        vis = len(re.sub(r"\s", "", c.get("body", "")))
+        # 手机信息流的速读速度约 300-500 字/分钟，按 400 字/分钟折算预估
+        # 阅读时长，下限 15 秒、上限 90 秒（再长观众也不会读完全文）。
+        read_sec = min(90, max(15, round(vis / 400 * 60 / 5) * 5))
         return {
             "content_id": c["content_id"], "title": c["title"],
             "summary": c["summary"], "domain": c["domain"],
             "domain_cn": c.get("domain_cn", DOMAIN_CN.get(c["domain"], "")),
             "cover_theme": c.get("cover_theme", "tech"),
             "body_len": c.get("body_len", "S"),
+            "read_sec": read_sec,
         }
 
 
