@@ -10,3 +10,8 @@ knowledge/session/
 __pycache__/
 **/__pycache__/
 *.py[cod]
+
+# 服务运行日志与本地临时输出
+demo/server*.log
+*.log
+.qa_out.txt

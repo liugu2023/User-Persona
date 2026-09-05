@@ -5,9 +5,8 @@
 ## 1. 上传代码
 
 ```bash
-sudo mkdir -p /opt/feed-knows-you
-sudo chown $USER /opt/feed-knows-you
-git clone <你的仓库地址> /opt/feed-knows-you   # 或 scp 上传
+sudo mkdir -p /root/yuna/User-Persona
+git clone <你的仓库地址> /root/yuna/User-Persona   # 或 scp 上传
 ```
 
 ## 2. 配置环境变量
@@ -15,10 +14,9 @@ git clone <你的仓库地址> /opt/feed-knows-you   # 或 scp 上传
 ```bash
 sudo tee /etc/feed-knows-you.env >/dev/null <<'EOF'
 YUNA_ADMIN_PASSWORD=换成你的现场管理员密钥
-YUNA_METRICS_PATH=/opt/feed-knows-you/demo/aggregate_metrics.json
+YUNA_METRICS_PATH=/root/yuna/User-Persona/demo/aggregate_metrics.json
 EOF
 sudo chmod 600 /etc/feed-knows-you.env
-sudo chown www-data /opt/feed-knows-you/demo   # WorkingDirectory 需可写（聚合统计与日志落在这里）
 ```
 
 ## 3. 安装并启动服务
@@ -36,8 +34,8 @@ sudo systemctl enable --now feed-knows-you
 | 启动 / 停止 | `sudo systemctl start\|stop feed-knows-you` |
 | 重启 | `sudo systemctl restart feed-knows-you` |
 | 状态 | `systemctl status feed-knows-you` |
-| 实时日志 | `tail -f /opt/feed-knows-you/demo/server.log` |
-| 错误日志 | `tail -f /opt/feed-knows-you/demo/server.err.log` |
+| 实时日志 | `tail -f /root/yuna/User-Persona/demo/server.log` |
+| 错误日志 | `tail -f /root/yuna/User-Persona/demo/server.err.log` |
 | 开机自启 | `sudo systemctl enable feed-knows-you` |
 
 日志说明：服务把 stdout/stderr 追加写入 `demo/server.log` 与 `demo/server.err.log`。
@@ -45,7 +43,7 @@ sudo systemctl enable --now feed-knows-you
 文件会缓慢增长，介意的话加一条 logrotate：
 
 ```
-/opt/feed-knows-you/demo/server*.log {
+/root/yuna/User-Persona/demo/server*.log {
     weekly
     rotate 8
     compress
