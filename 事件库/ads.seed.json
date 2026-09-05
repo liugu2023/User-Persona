@@ -1,0 +1,602 @@
+{
+  "version": 1,
+  "kind": "ads_seed",
+  "generated_at": "2026-09-04T21:16:07",
+  "counts": {
+    "ads": 24
+  },
+  "ads": [
+    {
+      "ad_id": "AD01",
+      "title": "学生开发者专享 · 云服务器学生价",
+      "body": "1 核 2G 起步，新用户首年特惠，学生认证再减，部署个人项目、跑脚本都够用。",
+      "targeting": {
+        "domains": {
+          "tech_digital": 0.6
+        },
+        "sub_tags": {
+          "programming": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_tech_digital} 条科技数码内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD02",
+      "title": "旗舰级工作站 · 教育优惠",
+      "body": "顶配机型现货供应，学生教育优惠专享价，下单即附送整机调试与一年服务。",
+      "targeting": {
+        "domains": {
+          "tech_digital": 0.6
+        },
+        "sub_tags": {
+          "hardware": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_hardware} 条硬件内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质优先 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD03",
+      "title": "技术书专场 · 学生专属折扣",
+      "body": "全场技术书享学生专属折扣，经典再版与年度新书同步上架，专区内下单立减。",
+      "targeting": {
+        "domains": {
+          "tech_digital": 0.5
+        },
+        "traits": {
+          "deep_reader": 0.5,
+          "price_sensitive": 0.4
+        }
+      },
+      "reason_template": [
+        "你当前浏览行为偏向深度阅读 {trait:deep_reader}",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更在意价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD04",
+      "title": "游戏打折季 · 上千款一折起",
+      "body": "数千款游戏限时低至一折，历史最低价仅此三天，现在入手立省一大笔。",
+      "targeting": {
+        "domains": {
+          "game_acg": 0.6
+        },
+        "traits": {
+          "price_sensitive": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_game_acg} 条游戏相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD05",
+      "title": "限定手办预售 · 全球限量",
+      "body": "高端手办限定版开启预售，全球限量编号发售，首轮名额有限，售罄不再补货。",
+      "targeting": {
+        "domains": {
+          "game_acg": 0.6
+        },
+        "sub_tags": {
+          "anime": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_anime} 条动漫与周边内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质收藏 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD06",
+      "title": "新作首发预购 · 附赠季票",
+      "body": "年度大作首发预购现已开启，抢先获得首发限定外观，预购即赠完整季票与先行测试资格。",
+      "targeting": {
+        "domains": {
+          "game_acg": 0.6
+        },
+        "traits": {
+          "early_adopter": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_game_acg} 条游戏相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常第一时间点开新品 {trait:early_adopter}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD07",
+      "title": "生鲜到家 · 新人专享",
+      "body": "当季蔬菜水果每周直送到家，新人首单专享试用，不合适随时可停，一次一箱不囤货。",
+      "targeting": {
+        "domains": {
+          "life_shopping": 0.6
+        },
+        "sub_tags": {
+          "food": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_food} 条美食相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD08",
+      "title": "高端厨电体验官招募 · 新品免费试用",
+      "body": "报名成为高端厨电体验官，新品免费试用三十天，满意再决定去留，品质一步到位。",
+      "targeting": {
+        "domains": {
+          "life_shopping": 0.6
+        },
+        "sub_tags": {
+          "kitchen": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_kitchen} 条厨电相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质做工 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD09",
+      "title": "宠物粮订阅 · 按月配送",
+      "body": "猫粮按月配送到家，同款连吃三个月不挑食，再囤大包装，先试后买更放心。",
+      "targeting": {
+        "domains": {
+          "life_shopping": 0.5
+        },
+        "sub_tags": {
+          "pet": 0.6
+        },
+        "traits": {
+          "comparer": 0.4
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_pet} 条宠物相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常在同类商品中反复比较 {trait:comparer}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD16",
+      "title": "跑鞋换季清仓 · 五折起",
+      "body": "上季人气款跑鞋换季清仓，缓震、竞速两系都有，五折起售，售完即止。",
+      "targeting": {
+        "domains": {
+          "sport_outdoor": 0.6
+        },
+        "sub_tags": {
+          "gear": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_gear} 条装备相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD17",
+      "title": "专业户外装备 · 以旧换新",
+      "body": "旗舰级户外装备以旧换新专场，旧装备按成色抵扣，升级当季新款更划算。",
+      "targeting": {
+        "domains": {
+          "sport_outdoor": 0.6
+        },
+        "sub_tags": {
+          "gear": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_gear} 条装备相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质优先 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD18",
+      "title": "城市夜跑团 · 免费加入",
+      "body": "城市夜跑团每周两场，按配速分组零门槛，免费加入，完跑还有水果和补给。",
+      "targeting": {
+        "domains": {
+          "sport_outdoor": 0.5
+        },
+        "sub_tags": {
+          "fitness": 0.5
+        },
+        "traits": {
+          "casual": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_fitness} 条健身相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常选低门槛、无压力的内容 {trait:casual}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD22",
+      "title": "音乐会员 · 学生半价",
+      "body": "学生认证立享会员半价，千万曲库高保真畅听，新手期再加送专属歌单，续费还有折上折。",
+      "targeting": {
+        "domains": {
+          "av_ent": 0.6
+        },
+        "sub_tags": {
+          "music": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_music} 条音乐相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD23",
+      "title": "耳机试听预约 · 到店体验",
+      "body": "预约到店免费试听旗舰耳机，独立听音室现场对比声场与细节，满意再下单。",
+      "targeting": {
+        "domains": {
+          "av_ent": 0.5
+        },
+        "sub_tags": {
+          "music": 0.6
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_music} 条音乐相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质优先 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD24",
+      "title": "影视会员 · 新剧抢先看",
+      "body": "会员新剧抢先看，重磅剧集开播日同步上线，独家幕后花絮加量放送。",
+      "targeting": {
+        "domains": {
+          "av_ent": 0.6
+        },
+        "sub_tags": {
+          "show": 0.5
+        },
+        "traits": {
+          "early_adopter": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_show} 条剧集相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常第一时间点开新内容 {trait:early_adopter}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD13",
+      "title": "电子书会员 · 无限畅读",
+      "body": "一次开通全年畅读，热门新书与经典旧作都不限次数，看得越多越划算。",
+      "targeting": {
+        "domains": {
+          "culture_art": 0.6
+        },
+        "sub_tags": {
+          "reading": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_reading} 条阅读相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD14",
+      "title": "精装典藏套装 · 限量编号",
+      "body": "全套限量编号典藏版，布面书脊配手工函套，摆上书架就是一件陈设。",
+      "targeting": {
+        "domains": {
+          "culture_art": 0.5
+        },
+        "sub_tags": {
+          "reading": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_reading} 条阅读相关内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质与收藏 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD15",
+      "title": "外语陪练 · 真人一对一",
+      "body": "母语者真人一对一陪练，从发音纠错到场景对话，全按你的节奏来。",
+      "targeting": {
+        "domains": {
+          "culture_art": 0.5
+        },
+        "sub_tags": {
+          "language": 0.6
+        },
+        "traits": {
+          "professional": 0.4
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_language} 条语言学习内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常选择专业向内容 {trait:professional}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD10",
+      "title": "错题整理工具 · 本地版",
+      "body": "把错题按章节、原因和掌握度归档，离线也能用，适合期末前集中复盘。",
+      "targeting": {
+        "domains": {
+          "study_exam": 0.6
+        },
+        "sub_tags": {
+          "note": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_note} 条笔记与错题内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注低成本方案 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD11",
+      "title": "自习计划表 · 一键生成",
+      "body": "按课程、截止时间和每日空档生成计划，适合想直接开始的人。",
+      "targeting": {
+        "domains": {
+          "study_exam": 0.5
+        },
+        "sub_tags": {
+          "exam": 0.5
+        },
+        "traits": {
+          "decisive": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_exam} 条复习计划内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常选择直接可执行的方案 {trait:decisive}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD12",
+      "title": "课程资料库 · 精准更新",
+      "body": "按课程目录同步讲义、例题和解析，减少找错版本的时间。",
+      "targeting": {
+        "domains": {
+          "study_exam": 0.5
+        },
+        "sub_tags": {
+          "course": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_course} 条课程资料内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好省心准确 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD19",
+      "title": "校园活动日历 · 一周不错过",
+      "body": "按社团、讲座和放映会自动整理提醒，不错过你可能感兴趣的活动。",
+      "targeting": {
+        "domains": {
+          "social_hot": 0.6
+        },
+        "sub_tags": {
+          "campus_life": 0.5
+        },
+        "traits": {
+          "early_adopter": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_campus_life} 条校园活动内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常第一时间点开新内容 {trait:early_adopter}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD20",
+      "title": "社团管理工具 · 排班免费用",
+      "body": "报名、排班、签到和复盘统一管理，适合活动组织者试用。",
+      "targeting": {
+        "domains": {
+          "social_hot": 0.5
+        },
+        "sub_tags": {
+          "club": 0.5
+        },
+        "traits": {
+          "professional": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_club} 条社团组织内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常关注流程、分工和执行细节 {trait:professional}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    },
+    {
+      "ad_id": "AD21",
+      "title": "热点核验助手 · 一键找原文",
+      "body": "帮你整理来源、时间和原文链接，转发前多看一眼。",
+      "targeting": {
+        "domains": {
+          "social_hot": 0.5
+        },
+        "sub_tags": {
+          "news_literacy": 0.6
+        },
+        "traits": {
+          "conservative": 0.5
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_news_literacy} 条信息核验内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你更常选择稳妥、先确认再行动的内容 {trait:conservative}"
+      ],
+      "is_simulated": true,
+      "review_status": "pending",
+      "reviewed_by": "",
+      "reviewed_at": ""
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "kind": "disambiguation_cards",
+  "cards": [
+    {
+      "card_id": "Q1",
+      "axis": "price",
+      "prompt": "同一件东西，你更在意",
+      "options": [
+        {"pole": "pro", "text": "性价比高，外观普通"},
+        {"pole": "con", "text": "贵一些，做工更好"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q2",
+      "axis": "price",
+      "prompt": "你更可能点开",
+      "options": [
+        {"pole": "pro", "text": "《五百元档怎么选》"},
+        {"pole": "con", "text": "《顶配到底强在哪》"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q3",
+      "axis": "depth",
+      "prompt": "你更想看",
+      "options": [
+        {"pole": "pro", "text": "一篇三千字的完整拆解"},
+        {"pole": "con", "text": "一张图，三十秒看完"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q4",
+      "axis": "depth",
+      "prompt": "遇到感兴趣的话题，你会",
+      "options": [
+        {"pole": "pro", "text": "找一篇长文认真读完"},
+        {"pole": "con", "text": "先看摘要，够用就行"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q5",
+      "axis": "novelty",
+      "prompt": "你更想了解",
+      "options": [
+        {"pole": "pro", "text": "刚发布的新东西"},
+        {"pole": "con", "text": "用了很多年、口碑稳的"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q6",
+      "axis": "novelty",
+      "prompt": "新版本出来时，你通常",
+      "options": [
+        {"pole": "pro", "text": "第一时间就更新"},
+        {"pole": "con", "text": "等等看再说"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q7",
+      "axis": "expertise",
+      "prompt": "你更喜欢哪种讲法",
+      "options": [
+        {"pole": "pro", "text": "术语准确，面向内行"},
+        {"pole": "con", "text": "讲得通俗，谁都能懂"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q8",
+      "axis": "expertise",
+      "prompt": "看到一堆参数表，你会",
+      "options": [
+        {"pole": "pro", "text": "逐项看完"},
+        {"pole": "con", "text": "直接跳到结论"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q9",
+      "axis": "decision",
+      "prompt": "你更想要",
+      "options": [
+        {"pole": "pro", "text": "直接告诉我选哪个"},
+        {"pole": "con", "text": "给我几个选项自己比"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    },
+    {
+      "card_id": "Q10",
+      "axis": "decision",
+      "prompt": "做决定前，你一般",
+      "options": [
+        {"pole": "pro", "text": "想好了就定"},
+        {"pole": "con", "text": "反复看好几家"}
+      ],
+      "domain": null,
+      "review_status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# 现场长期统计文件只含匿名聚合数字，但不应随代码提交或复制到仓库。
+demo/aggregate_metrics.json
+demo/.*.tmp
+# 不把模型/聊天会话转储带入项目或部署包。
+knowledge/session/
+# 本地工具配置与 Python 运行缓存不属于产品源码。
+.claude/
+.agents/
+.codex/
+__pycache__/
+**/__pycache__/
+*.py[cod]

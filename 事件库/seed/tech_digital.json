@@ -1,0 +1,357 @@
+{
+  "domain": "tech_digital",
+  "interest": [
+    {
+      "content_id": "T01",
+      "title": "千元机横评：这四台谁更值得买",
+      "summary": "四台千元机各有长短，预算有限怎么选，一篇说清。",
+      "body": "四台千元机摆在一起，差异比想象中大。一台屏幕素质突出，观感最好；一台续航扎实，重度使用能撑一整天；一台影像调得讨喜，随手拍就好看；还有一台做工细致。各有各的长处，也各有各的短板——屏好的电池小，续航好的拍照一般。预算就这么多，别指望全能。建议：白天用得多的看续航，晚上刷得多的看屏幕，爱拍照的看影像，下单前摸一摸真机。赶上这波换新补贴，正是出手的时候。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "mobile": 1.0,
+        "hardware": 0.4
+      },
+      "traits": {
+        "price_sensitive": 1.0,
+        "comparer": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T02",
+      "title": "旗舰影像实测：一万块买到了什么",
+      "summary": "多带几台去光线复杂的场景拍一百张，比看参数表更有用。",
+      "body": "一万块买一台影像旗舰，买到的不是镜头数量，而是成片率。这句话值得展开来说，尤其在你准备掏这笔钱之前。\n\n先说硬件。主摄底大，进光量就大，夜景的可用性直接拉开档次：小底机器暗部糊成一片时，大底还能留住细节，这是物理层面的优势，后期救不回来。长焦的差距更直接，三倍和五倍不是数字问题，是构图自由度——五倍能把主体从杂乱背景里拉出来，三倍只能靠裁切，裁完画质就崩。\n\n但真正拉开体验的不是参数表，是调教。同样的传感器，不同厂商的色彩倾向、曝光策略、降噪力度可以南辕北辙：有人追求真实还原，有人喜欢讨喜的饱和度，没有对错，只有取舍。多带几台去光线复杂的场景各拍一百张，比较废片率，比看任何评测和参数表都要实在。\n\n最后说句实在话，旗舰的溢价有一半在参数之外——做工、手感、屏幕、系统顺畅度，这些不上参数表的东西，才是天天用手机的人能实实在在感知到的差距。",
+      "body_len": "L",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "mobile": 1.0,
+        "hardware": 0.7
+      },
+      "traits": {
+        "premium_oriented": 1.0,
+        "professional": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T03",
+      "title": "Linux 服务器部署实战：从零到上线",
+      "summary": "Nginx 反向代理加 Docker 编排，一次讲完整条链路。",
+      "body": "很多人第一次把服务部署到线上，卡住的地方不是代码，是链路。链路不长，但每一步都有坑。\n\n从公网请求进来开始算：域名解析到服务器公网 IP，443 端口由 Nginx 接住，做完 TLS 卸载之后转发给内网的某个端口。这个端口后面是容器。容器怎么起、起几个、挂哪些卷、环境变量怎么注入，都由编排文件描述。从域名到端口、从代理到容器，三层之间任何一层配错，浏览器上看到的都是同一个「502」，这就是新手最容易崩溃的地方——错误信息不指向出错的位置。\n\n排查顺序建议固定下来，每次都从外往里查：先确认解析生效，再确认端口通，再确认反向代理转发地址正确，最后才看容器日志。反过来从容器开始查，往往会在业务代码里浪费很久，而问题其实在最外层。\n\n配置文件本身建议全部纳入版本管理，包括 Nginx 的站点配置与编排文件。服务器是会被重装的，重装那天你会庆幸自己这么做过。",
+      "body_len": "L",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "programming": 1.0,
+        "devops": 0.7
+      },
+      "traits": {
+        "deep_reader": 0.7,
+        "professional": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T04",
+      "title": "一张图看懂显卡天梯",
+      "summary": "天梯图眼花缭乱？其实看显卡只盯三件事就够了。",
+      "body": "看显卡只盯三件事：性能、功耗、价格。性能看实测帧率，别被宣传里的接口唬住；功耗看满载时的整机数字，纸面峰值没参考价值；价格看性价比曲线，中端最划算，旗舰溢价最高。这一代最大的变数是算力需求把价格整体推高了一截，二手跟着水涨船高。预算有限就选上一代中端，性能没差多少，价格差一大截。急用就趁现在，越等越贵。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "hardware": 1.0
+      },
+      "traits": {
+        "quick_skimmer": 1.0,
+        "casual": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T05",
+      "title": "Rust 入门：所有权模型在解决什么",
+      "summary": "所有权模型在编译期到底解决什么，一篇讲透。",
+      "body": "学 Rust 的人往往先被所有权模型劝退，再被它救回来。想明白它在解决什么，比背规则有用得多。\n\n传统语言里，内存管理的责任是模糊的：程序员自己申请、自己释放，一不小心就是悬垂指针、双重释放、内存泄漏，这些问题只在运行期爆炸，排查成本极高。垃圾回收把责任交给运行时，代价是停顿开销和不可预测的延迟。所有权模型走的是第三条路——在编译期就把「谁拥有这块内存」说清楚。变量拥有它的数据，函数参数是借用还是转移所有权，编译器逐行检查，违反规则直接编译失败。\n\n代价是学习曲线陡。生命周期参数、借用检查器、可变与不可变借用的互斥，初看像枷锁，实则是把「内存安全」这份承诺从运行期提前到编译期——你损失的是写代码时的灵活，换来的是上线后少一类几乎无法定位的崩溃。\n\n这也是它适合系统编程、网络服务与嵌入式的原因：这类代码对性能和可靠性同样苛刻，编译期的严格换来运行期的放心，这笔账是划算的。",
+      "body_len": "L",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "programming": 1.0
+      },
+      "traits": {
+        "deep_reader": 1.0,
+        "professional": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T06",
+      "title": "折叠屏新机上手 48 小时",
+      "summary": "折叠屏从尝鲜到能当主力机，这代跨过去了。",
+      "body": "新折叠屏到手两天，说几个真实感受。折痕正面看几乎消失，侧看还有一点痕迹，日常使用不影响。铰链手感扎实，开到任意角度都能停住，这代进步明显。外屏当主力机用毫无压力，展开后看文档、看漫画是真爽。重量控制住了，揣兜里不坠。短板是续航一般，重度使用撑不到一天，充电也不快。钛缓震、超高像素这些卖点都落到了实处。总的来说，从尝鲜到能当主力机，这一代算是跨过去了。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "mobile": 1.0,
+        "gadget": 0.7
+      },
+      "traits": {
+        "early_adopter": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T07",
+      "title": "用了三年的老笔记本，我决定再战两年",
+      "summary": "三年老笔记本，为什么决定再战两年——这笔账这么算。",
+      "body": "用了三年的笔记本，最近动了换机念头，冷静下来决定再战两年。日常办公、写文档、看视频，性能完全够用，卡顿多半是后台程序太多，清一轮就顺了。换了固态之后开机十几秒，体验不输新机。电池衰减了，配个便携电源也能撑大半天。新机当然好，但为同样的需求多花几千块，这笔账算不过来。等它真正跑不动，再一步到位换台好的，比现在赶着换划算得多。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "hardware": 1.0
+      },
+      "traits": {
+        "conservative": 1.0,
+        "price_sensitive": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T08",
+      "title": "本地跑大模型：显存不够就用这个方案",
+      "summary": "显存不够跑不动？本地量化方案几步就能部署。",
+      "body": "本地跑模型卡在显存，最快的是量化：把权重从 16 位压到 8 位甚至 4 位，显存占用直接砍半再砍半，精度损失在多数日常任务上可接受。显存实在不够，就把模型拆分到多张卡，或走 CPU 与 GPU 混合推理，慢但能跑。别在本机硬等——7B 以下值得本地化，再大的模型直接调云端接口，更快也更省。这是当前本地与云端双轨并行的通用做法。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "ai": 1.0,
+        "programming": 0.7
+      },
+      "traits": {
+        "professional": 1.0,
+        "decisive": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T09",
+      "title": "十分钟搞懂什么是大模型",
+      "summary": "不查资料不算数，大模型到底是怎么工作的。",
+      "body": "大模型不用想得太玄。简单说，它读了很多文字之后学会接话：你给上半句，它接下半句，接得多了，看起来就像在思考。它不查资料、不会算数，本质是靠猜「下一个词」来作答，所以偶尔会一本正经地胡说。如今它已经不只在聊天框里了，手机、眼镜、机器人里都开始装它。用它的正确姿势是：当成一个很会说话但偶尔犯迷糊的帮手，重要的事自己再核对一遍。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "ai": 1.0
+      },
+      "traits": {
+        "casual": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T10",
+      "title": "机械键盘选购：从轴体到配列",
+      "summary": "机械键盘从轴体到配列，每个选择都在决定手感。",
+      "body": "机械键盘的坑，不在价格，在选项太多。从轴体到配列，每层选择都在决定手感，说清楚再下单，避免买完后悔。\n\n轴体是灵魂。线性轴直上直下，适合打字快的人，长时间码字不累手；段落轴按下有脆响的确认感，喜欢「咔哒」反馈的人会着迷，办公室慎选，噪音是真实的社交成本。静音轴是折中，手感偏肉，换来安静。热插拔现在是标配，买错轴体不用重买整把，换几个轴就像换了把新键盘，这是整套键盘里最值得为未来付的溢价。\n\n配列层面，全尺寸适合离不开数字区的人，紧凑配列省桌面、双手距离近更舒服，但 F 区要按组合键。键帽材质决定长期体验：二色成型不褪字，涂层手感好但用久打油。铝壳的质感是塑料比不了的，键盘上的一份价钱一分货，在这里体现得最诚实，也是旗舰溢价最直观的所在。\n\n预算建议：轴体别省，外壳次之，键帽看喜好。下单前先租个试轴器上手按两天，比看一百篇评测都有用——手不会骗你。",
+      "body_len": "L",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "gadget": 1.0,
+        "hardware": 0.4
+      },
+      "traits": {
+        "comparer": 1.0,
+        "premium_oriented": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T11",
+      "title": "我把家里的路由器换成了软路由",
+      "summary": "折腾半年软路由，说结论：回不去了，但也别急着跟风。",
+      "body": "把家里路由器换成软路由，折腾了大半年，先说结论：回不去了，但也别急着跟风。\n\n软路由的实质，是用一台小主机跑路由系统，插件生态才是它的灵魂。去广告、分流、精细限速、内网穿透，这些在硬路由上要么没有、要么难配的功能，软路由都是装一个包的事。插件按需装、按需卸，系统本身开源免费，硬件花得省——一台二手小主机绰绰有余，功耗也就比家用路由器高几瓦。算下来一年的电费差距，几杯奶茶就打住了。\n\n代价是门槛。装系统要敲命令，排错要看日志，换插件全家断网十秒，家里人不一定理解，半夜断网的白眼得自己扛。最崩溃的一次是半夜升级，第二天全屋没网，顶着起床气重装系统。稳定的策略其实简单：装完冻结版本，只更新规则库，别手痒升级。\n\n值不值看需求：设备多、有共享需求、对网速敏感，值得；全家就一台手机刷短视频，原厂路由器够用，别给自己找事。",
+      "body_len": "L",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "hardware": 0.7,
+        "gadget": 1.0
+      },
+      "traits": {
+        "early_adopter": 0.7,
+        "professional": 1.0
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T12",
+      "title": "手机拍照：记住这一个设置就够了",
+      "summary": "不用学构图不用调参数，先把拍照这一项打开。",
+      "body": "只记一个设置：打开网格线。它不改画质，只在取景框上画四条线。多数拍歪的照片，问题就出在没有参照物——手持时人眼对水平线的判断能偏三四度。有了网格，把地平线或桌沿对齐其中一条横线，成片率立刻上一个台阶。曝光、对焦那些参数先别碰，把这个用熟再学下一个。就这一项，立竿见影。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "mobile": 1.0
+      },
+      "traits": {
+        "decisive": 1.0,
+        "casual": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "T13",
+      "title": "断网别急着重启：三条命令按顺序跑",
+      "summary": "五分钟把「断网」拆成三个小问题，逐个排除。",
+      "body": "断网别急着重启路由器，先按顺序跑三条命令。先 ping 网关，通了说明内网没问题，问题在出口；不通就查网线和 IP 配置。再 ping 一个公网 IP，通但打不开网页，多半是域名解析抽风，手动换成公共解析即可。三条命令五分钟，把「断网」拆成三个可以逐个排除的小问题，比到处乱点快得多。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "programming": 1.0
+      },
+      "traits": {
+        "quick_skimmer": 1.0,
+        "professional": 0.7
+      },
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": false,
+      "review_status": "pending"
+    }
+  ],
+  "probes": [
+    {
+      "content_id": "P01",
+      "title": "新款处理器跑分出炉",
+      "summary": "新款处理器跑分出炉，这代提升主要在单核与功耗。",
+      "body": "新款处理器跑分已经出炉：单核提升明显，多核涨幅小一些，这代重点放在功耗控制上，能效比提升是这代的主打。实际游戏表现比跑分更好看，发热比上代改善不少，配套主板价格中规中矩，首发不用抢。想升级的可以等游戏实测出来再决定，近期不打算换机的，也没必要心动。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "hardware": 1.0
+      },
+      "traits": {},
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": true,
+      "review_status": "pending"
+    },
+    {
+      "content_id": "P02",
+      "title": "一个每天都用得上的命令行技巧",
+      "summary": "每天都要敲命令，这几个技巧能省不少时间。",
+      "body": "每天都要敲命令，记住这几招就够用。历史记录支持前缀补全，输入几个字母再按方向键上，就能直接翻到想用的命令，比一页页翻快得多。给长命令起别名，把常用的部署命令绑成一个短词。误删前先确认，养成加保护的习惯。查端口、看进程、找文件这三件事的命令记熟，日常八成操作就够用了。",
+      "body_len": "S",
+      "domain": "tech_digital",
+      "sub_tags": {
+        "programming": 1.0
+      },
+      "traits": {},
+      "cover_type": "css_gradient",
+      "cover_theme": "tech",
+      "is_probe": true,
+      "review_status": "pending"
+    }
+  ],
+  "ads": [
+    {
+      "ad_id": "AD01",
+      "title": "学生开发者专享 · 云服务器学生价",
+      "body": "1 核 2G 起步，新用户首年特惠，学生认证再减，部署个人项目、跑脚本都够用。",
+      "targeting": {
+        "domains": {
+          "tech_digital": 0.6
+        },
+        "sub_tags": {
+          "programming": 0.5
+        },
+        "traits": {
+          "price_sensitive": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_tech_digital} 条科技数码内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更关注价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true
+    },
+    {
+      "ad_id": "AD02",
+      "title": "旗舰级工作站 · 教育优惠",
+      "body": "顶配机型现货供应，学生教育优惠专享价，下单即附送整机调试与一年服务。",
+      "targeting": {
+        "domains": {
+          "tech_digital": 0.6
+        },
+        "sub_tags": {
+          "hardware": 0.5
+        },
+        "traits": {
+          "premium_oriented": 0.6
+        }
+      },
+      "reason_template": [
+        "你浏览了 {n_hardware} 条硬件内容",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更偏好品质优先 {trait:premium_oriented}{cross:price}"
+      ],
+      "is_simulated": true
+    },
+    {
+      "ad_id": "AD03",
+      "title": "技术书专场 · 学生专属折扣",
+      "body": "全场技术书享学生专属折扣，经典再版与年度新书同步上架，专区内下单立减。",
+      "targeting": {
+        "domains": {
+          "tech_digital": 0.5
+        },
+        "traits": {
+          "deep_reader": 0.5,
+          "price_sensitive": 0.4
+        }
+      },
+      "reason_template": [
+        "你当前浏览行为偏向深度阅读 {trait:deep_reader}",
+        "你在《{top_content}》上停留了 {dwell} 秒",
+        "你在多个板块更在意价格 {trait:price_sensitive}{cross:price}"
+      ],
+      "is_simulated": true
+    }
+  ]
+}

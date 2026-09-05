@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0a1322">
+<title>信息流</title>
+<link rel="stylesheet" href="/static/mobile.css">
+<script src="/static/lucide.js"></script>
+</head>
+<body class="ink">
+
+<noscript>
+  <section class="noscript" role="alert">
+    <h1>需要开启 JavaScript</h1>
+    <p>请开启 JavaScript 后重新进入本体验。</p>
+  </section>
+</noscript>
+
+<canvas id="fx"></canvas>
+
+<!-- ═══ 告知页 ═══ -->
+<section id="gate" role="dialog" aria-modal="true" aria-hidden="false" aria-labelledby="gateTitle" aria-label="隐私告知">
+  <div class="top"><span><span class="sq"></span>FEED KNOWS YOU</span><span class="mono">燕山大学 · 网安周现场版</span></div>
+  <h1 class="title" id="gateTitle">
+    <span class="l"><span>这一次，</span></span>
+    <span class="l"><span>你不用填</span></span>
+    <span class="l"><span>任何东西。</span></span>
+  </h1>
+  <p class="lede">接下来像平时一样刷 90 秒。它会只凭你的点击、停留和划过，猜一猜你是谁——然后把推断过程摊开给你看。</p>
+  <ul class="vow">
+    <li><span class="no">01</span><span class="ic" data-lucide="id-card" data-size="18"></span><span><b>不需要姓名、手机号</b><small>不注册、不登录、不申请任何系统权限</small></span></li>
+    <li><span class="no">02</span><span class="ic" data-lucide="mouse-pointer-click" data-size="18"></span><span><b>只分析本次点击行为</b><small>点了什么、看了多久、划过了什么，仅此三项</small></span></li>
+    <li><span class="no">03</span><span class="ic" data-lucide="timer" data-size="18"></span><span><b>2 小时后自动删除</b><small>结果页也可以立刻手动删</small></span></li>
+  </ul>
+  <label class="swrow">
+    <span class="ic" data-lucide="monitor" data-size="18"></span>
+    <span class="tx">允许把随机代号和本次浏览侧写展示在现场大屏，可随时关闭</span>
+    <input class="swin" type="checkbox" id="screenConsent" checked><i class="sw"></i>
+  </label>
+  <div class="gatefoot">
+    <button type="button" class="cta" id="gateBtn" disabled><i class="fill"></i><span id="gateTxt">请先读完上面三条</span><span data-lucide="arrow-right" data-size="18"></span></button>
+    <p class="fine">全部内容均为模拟内容<br>本页面不读取剪贴板、浏览器历史与设备信息</p>
+  </div>
+</section>
+
+<!-- ═══ 信息流 ═══ -->
+<main id="app" class="hide" aria-hidden="true" inert>
+  <section id="homeView" class="app-view on" data-view="home" role="region" aria-label="推荐信息流" aria-hidden="false">
+    <div id="pullRefresh" class="pull-refresh" aria-live="polite" aria-hidden="true">
+      <span class="pull-icon" data-lucide="arrow-down" data-size="16"></span>
+      <span id="pullRefreshLabel">下拉刷新</span>
+    </div>
+    <div class="nav">
+      <div class="r1">
+        <div class="mark">F</div>
+        <div class="wd">信息流<small>为你推荐</small></div>
+        <div class="sp"></div>
+        <div class="code"><span class="dot"></span><span id="codename">—</span></div>
+        <button type="button" class="ib" id="navSearch" aria-label="搜索" aria-controls="sheetSearch" aria-expanded="false"><span data-lucide="search" data-size="20"></span></button>
+        <button type="button" class="ib" id="navBell" aria-label="通知" aria-controls="sheetBell" aria-expanded="false"><span data-lucide="bell" data-size="20"></span><i id="bellDot" class="hide" aria-hidden="true"></i></button>
+      </div>
+      <!-- 推荐频道保留探索空间，让行为成为唯一输入 -->
+      <div class="tabs" id="tabs">
+        <span class="tab on" aria-current="page">推荐</span>
+        <span class="tabhint">下拉刷新 · 换一批</span>
+        <button type="button" class="refresh-btn" id="refreshBtn" aria-label="换一批内容" aria-controls="feed" aria-busy="false" aria-disabled="true" disabled>
+          <span data-lucide="refresh-cw" data-size="15"></span><span class="refresh-label">换一批</span>
+        </button>
+      </div>
+    </div>
+    <div id="feed" aria-live="polite" aria-busy="false"></div>
+    <div class="more" id="more"><span class="sp"></span>正在加载</div>
+  </section>
+
+  <section id="mine" class="app-view" data-view="mine" role="region" aria-label="我的隐私设置" aria-hidden="true" hidden inert>
+    <div class="hd"><div class="av" data-lucide="user" data-size="22"></div>
+      <div><b id="mineCode">—</b><small>本次体验代号</small></div></div>
+    <div class="mcard"><h4>本次会用到</h4><ul id="mCollect"></ul></div>
+    <div class="mcard"><h4>不会读取</h4><ul id="mNo"></ul></div>
+    <div class="mcard"><h4>自动删除</h4><p>本次体验数据 2 小时后自动删除。刷完之后，也可以在结果页立即删除。</p></div>
+    <div class="mcard"><h4>大屏展示</h4>
+      <label class="toggle"><span>展示随机代号和本次浏览侧写</span><input class="swin" type="checkbox" id="screenPref"><i class="sw"></i></label></div>
+  </section>
+
+  <!-- 「发现」：不按画像排序的固定信息流 -->
+  <section id="find" class="app-view" data-view="find" role="region" aria-label="发现信息流" aria-hidden="true" hidden inert>
+    <div class="fhd">
+      <b>发现</b>
+      <small>这一栏不按你的浏览侧写排序</small>
+    </div>
+    <div id="findFeed" aria-live="polite" aria-busy="false"></div>
+    <p class="fnote"><span data-lucide="info" data-size="14"></span><span>这里的点击仍会影响本次侧写。</span></p>
+    <button type="button" class="find-back" id="findBack"><span data-lucide="arrow-left" data-size="16"></span>回到推荐信息流</button>
+  </section>
+
+  <nav class="tabbar" id="tabbar" aria-label="主导航">
+    <button type="button" class="on" data-k="home" aria-current="page" aria-controls="homeView"><span class="i" data-lucide="home" data-size="22"></span>首页</button>
+    <button type="button" data-k="find" aria-controls="find"><span class="i" data-lucide="compass" data-size="22"></span>发现</button>
+    <button type="button" data-k="mine" aria-controls="mine"><span class="i" data-lucide="user" data-size="22"></span>我的</button>
+  </nav>
+</main>
+
+<!-- ═══ 搜索面板：展示本次体验形成的猜测 ═══ -->
+<section class="sheet" id="sheetSearch" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="searchTitle" aria-label="搜索">
+  <div class="sh-hd">
+    <div class="fakebar" role="searchbox" aria-readonly="true" aria-label="只读搜索框"><span data-lucide="search" data-size="16"></span><span class="ph" id="searchTitle">搜索（只读）</span></div>
+      <button type="button" class="sh-x" data-close aria-label="关闭搜索"><span data-lucide="x" data-size="20"></span></button>
+  </div>
+  <div class="sh-bd">
+    <h4 class="sh-t">猜你想搜</h4>
+    <div class="chips" id="guessChips"></div>
+    <p class="sh-note" id="guessNote" aria-live="polite"></p>
+    <button type="button" class="sheet-back" data-close>返回信息流</button>
+  </div>
+</section>
+
+<!-- ═══ 通知面板：本次体验的画像变化 ═══ -->
+<section class="sheet" id="sheetBell" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="bellTitle" aria-label="通知">
+  <div class="sh-hd">
+    <div class="sh-title" id="bellTitle">通知</div>
+    <button type="button" class="sh-x" data-close aria-label="关闭通知"><span data-lucide="x" data-size="20"></span></button>
+  </div>
+  <div class="sh-bd">
+    <ul class="notis" id="notiList" aria-live="polite"></ul>
+    <p class="sh-note">这里会提示本次体验中的侧写变化，方便你随时查看。</p>
+    <button type="button" class="sheet-back" data-close>返回信息流</button>
+  </div>
+</section>
+
+<!-- ═══ 阅读页 ═══ -->
+<article id="reader" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="rtitle">
+  <div id="rtop"><button type="button" class="bk" id="rback" aria-label="返回"><span data-lucide="chevron-left" data-size="26"></span></button>
+    <span class="src">正文</span><span class="chip" id="rchip"></span><i id="rprog"></i></div>
+  <div id="rwrap">
+    <div class="kicker" id="rkick"></div>
+    <h2 id="rtitle"></h2>
+    <div class="meta"><span class="av" id="rav"></span><span id="rauthor"></span><span>·</span><span id="rtime"></span></div>
+    <div class="body" id="rbody"></div>
+    <div class="end">正文结束 · 模拟内容</div>
+    <button type="button" class="rb" id="rback2"><span data-lucide="arrow-left" data-size="16"></span>回到信息流</button>
+  </div>
+</article>
+
+<!-- ═══ 过场 ═══ -->
+<div id="veil"><div class="boot" id="boot"></div></div>
+
+<!-- ═══ 结果页 ═══ -->
+<section id="result" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="resultPageTitle" tabindex="-1">
+  <div class="result-progress" aria-hidden="true"><i id="resultProgressFill"></i></div>
+  <nav class="result-anchors" aria-label="结果页章节">
+    <button type="button" class="on" data-result-anchor="profile" aria-current="location">侧写</button>
+    <button type="button" data-result-anchor="evidence">证据</button>
+    <button type="button" data-result-anchor="reversal">反转</button>
+    <button type="button" data-result-anchor="action">行动</button>
+  </nav>
+  <div class="rw" id="resultBody"></div>
+</section>
+
+<section class="page-state" id="pageState" role="alertdialog" aria-modal="true" aria-hidden="true" aria-labelledby="stateTitle" aria-describedby="stateMessage">
+  <div class="state-mark" id="stateMark"><span data-lucide="wifi-off" data-size="24"></span></div>
+  <p class="state-kicker" id="stateKicker">连接状态</p>
+  <h2 id="stateTitle">连接中断</h2>
+  <p id="stateMessage">暂时无法连接，请重试。</p>
+  <button type="button" class="state-action" id="stateAction">重试</button>
+</section>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="/static/mobile-result.js"></script>
+<script src="/static/mobile.js"></script>
+</body>
+</html>
