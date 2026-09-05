@@ -1,0 +1,13 @@
+# 《信息流知道你》Caddy 配置
+# 放到 /etc/caddy/Caddyfile（或 include 进主配置），然后：
+#   systemctl reload caddy
+# 前提：DNS 已把 feedknows.liugu.cc 解析到本机公网 IP，80/443 对公网开放。
+# 证书由 Caddy 自动向 Let's Encrypt 申请并续期，无需手动管理。
+
+feedknows.liugu.cc {
+	# 反代到 systemd 服务（127.0.0.1:8000）
+	reverse_proxy 127.0.0.1:8000 {
+		# 大屏的 /api/stream 是 SSE 长连接，关闭响应缓冲保证实时推送
+		flush_interval -1
+	}
+}
