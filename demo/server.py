@@ -53,7 +53,10 @@ MAX_LIVE_SESSIONS = 200
 # 大屏推送：200ms 节流合并（§19.2）
 SUBSCRIBERS = []
 SUB_LOCK = threading.Lock()
-FOCUS = {"sid": None, "locked": False, "page": "auto"}
+FOCUS = {"sid": None, "locked": False, "page": "auto", "since": 0.0}
+# 自动焦点的最短驻留：多人同时在线时，“最近活跃”策略会把大屏变成
+# 滚马灯（实测 3 人交错点击 3 秒切换 60 次）。驻留期内保持当前焦点。
+FOCUS_MIN_DWELL_S = 15.0
 
 # 管理端认证：凭据只存在进程内，登录态使用短期 HttpOnly Cookie。
 # 生产/现场可通过 YUNA_ADMIN_PASSWORD（兼容 ADMIN_PASSWORD）注入固定密钥；
@@ -186,14 +189,20 @@ def screen_state():
                 focus = None
             else:
                 focus_finished = bool(focus.finished)
+    now = time.time()
+    dwell_expired = now - FOCUS["since"] >= FOCUS_MIN_DWELL_S
     if focus is None or (not FOCUS["locked"] and active and
-                         (focus is None or focus_finished or focus is not active[0])):
+                         (focus_finished or focus not in active or
+                          (dwell_expired and focus is not active[0]))):
         # 锁定的会话被删除或主动退出大屏后，自动切到下一位时同时解除
         # 旧锁定状态，避免响应里出现“locked: true”却实际指向新会话。
         if focus is None and FOCUS["locked"]:
             FOCUS["locked"] = False
+        prev_sid = FOCUS["sid"]
         focus = active[0] if active else None
         FOCUS["sid"] = focus.sid if focus else None
+        if FOCUS["sid"] != prev_sid:
+            FOCUS["since"] = now
         # Stale lock state is meaningless after the locked session expires or
         # is deleted; do not broadcast "locked: true" with an empty focus.
         if focus is None:
@@ -754,6 +763,7 @@ class Handler(BaseHTTPRequestHandler):
             FOCUS["locked"] = _parse_bool(body.get("locked"), False)
             if FOCUS["sid"] is None:
                 FOCUS["locked"] = False
+            FOCUS["since"] = time.time()
             broadcast()
             return self._json({"ok": True, "focus": FOCUS})
 

@@ -456,6 +456,7 @@ canvas.spark{width:100%;height:110px;display:block}
 .rbtn:active{transform:scale(.985)}
 .rbtn.danger{background:var(--danger);border-color:var(--danger);color:#fff}
 .rbtn:disabled{opacity:.55}
+.rbtn.arm{box-shadow:0 0 0 3px rgba(200,65,58,.35)}
 .foot{color:var(--mute);font-size:11.5px;text-align:center;margin-top:22px;line-height:2;letter-spacing:.03em}
 .foot b{color:var(--fg-2);font-weight:500}
 
@@ -654,3 +655,11 @@ body:not(.modal-lock) .page-state:not(.on){display:none!important;}
 .adcard{border:1px solid var(--pline)}
 .bub .ph.after::after{background:linear-gradient(180deg,transparent 40%,rgba(24,38,66,.10))}
 .result-anchors button.on{background:var(--ink-3)}
+
+/* iOS 分享图预览层：download 属性在 iOS Safari 上不生效，改为长按保存 */
+#shareOverlay{position:fixed;inset:0;z-index:260;background:rgba(10,19,34,.78);
+  display:flex;align-items:center;justify-content:center;padding:24px}
+#shareOverlay .share-card{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:82vw}
+#shareOverlay img{width:min(66vw,300px);border-radius:16px;box-shadow:0 24px 70px rgba(5,12,24,.5)}
+#shareOverlay p{margin:0;color:#fff;font-size:14px;text-align:center;line-height:1.7}
+#shareOverlay button{min-width:120px;min-height:44px;border-radius:12px;background:var(--ac-btn);color:#fff;font-size:15px;font-weight:600}

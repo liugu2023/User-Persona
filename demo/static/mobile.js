@@ -998,7 +998,12 @@ async function refreshFeed(requestId = null) {
       /* 只记录服务端实际采用的锚点；客户端本地的 lastClickedCid 可能
          尚未入账，不能把“想采用”伪装成“已采用”。 */
       anchor_content_id: anchor && anchor.content_id || null });
-    toast("内容已刷新");
+    /* 把“换一批跟随最近点击”讲出来：这正是体验想传达的“行为即数据”，
+       也解释了这次刷新为什么和上次不一样。标题用 textContent 展示，无注入面。 */
+    const anchorTitle = anchor && anchor.title ? String(anchor.title) : "";
+    toast(anchorTitle
+      ? "根据《" + (anchorTitle.length > 12 ? anchorTitle.slice(0, 12) + "…" : anchorTitle) + "》换了一批"
+      : "内容已刷新");
     flush();
     if (homeView) homeView.scrollTop = 0;
     refreshSucceeded = true;

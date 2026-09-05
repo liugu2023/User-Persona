@@ -504,7 +504,25 @@ function renderResult(p) {
     const cv = document.getElementById("cvSpark");
     if (cv) animate(1400, t => { if (cv.isConnected) drawSpark(cv, p.history, t); });
   });
-  document.getElementById("del").onclick = doDelete;
+  /* 删除不可逆且整页碎裂，误触代价高：两段式确认（4 秒内再按一次），
+     不引入系统弹窗打断结果页的叙事，也不削弱“行使删除权”的动作感。 */
+  const delBtn = document.getElementById("del");
+  const delLabel = delBtn.innerHTML;
+  let delArm = 0;
+  const disarmDel = () => {
+    if (!delBtn.isConnected) return;
+    delArm = 0;
+    delBtn.classList.remove("arm");
+    delBtn.innerHTML = delLabel;
+  };
+  delBtn.onclick = () => {
+    if (delArm && Date.now() < delArm) { disarmDel(); doDelete(); return; }
+    delArm = Date.now() + 4000;
+    delBtn.classList.add("arm");
+    delBtn.innerHTML = I("trash-2", 18) + "再按一次，确认删除";
+    Lucide.mount(delBtn);
+    setTimeout(() => { if (delArm && Date.now() >= delArm) disarmDel(); }, 4200);
+  };
   document.getElementById("share").onclick = () => shareCard(p);
   bindFeedback(p.feedback);
   Lucide.mount(body);
@@ -651,9 +669,29 @@ function shareCard(p) {
   g.fillText(p.click_count + " 次点击 · 0 字输入 · 数据 2 小时后自动删除", 60, 1250);
   g.fillStyle = PAL.gold; g.font = "20px " + mono;
   g.fillText("燕山大学 · 2026 年国家网络安全宣传周", 60, 1292);
+  const dataURL = cv.toDataURL("image/png");
+  /* iOS Safari 对 data URL 不响应 download 属性（只会打开预览）。
+     之前“已保存到相册”的提示在 iPhone 上是空话，分享就此中断；
+     改为展示图片引导长按保存，让提示与真实行为一致。 */
+  const isIOS = /iP(hone|od|ad)/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    const ov = document.createElement("div");
+    ov.id = "shareOverlay";
+    ov.setAttribute("role", "dialog");
+    ov.setAttribute("aria-modal", "true");
+    ov.setAttribute("aria-label", "保存分享图");
+    ov.innerHTML = '<div class="share-card"><img alt="本次浏览侧写分享图，长按保存到相册" src="' + dataURL + '">' +
+      '<p>长按图片保存到相册，或截图后分享</p>' +
+      '<button type="button">完成</button></div>';
+    ov.addEventListener("click", e => { if (e.target === ov) ov.remove(); });
+    ov.querySelector("button").onclick = () => ov.remove();
+    document.body.appendChild(ov);
+    return;
+  }
   const a = document.createElement("a");
-  a.download = "本次浏览侧写.png"; a.href = cv.toDataURL("image/png"); a.click();
-  toast("已保存到相册 / 下载目录");
+  a.download = "本次浏览侧写.png"; a.href = dataURL; a.click();
+  toast("已保存到下载目录");
 }
 function wrapText(g, text, x, y, maxw, lh) {
   let line = "", yy = y;
