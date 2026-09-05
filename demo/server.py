@@ -43,6 +43,13 @@ STORE = SessionStore(LIB, metrics_path=METRICS_PATH)
 FEEDER = Feeder(LIB)
 SCREEN_RESPONSE_CACHE_LIMIT = 24
 
+# 现场是开放的局域网服务：单个请求与并发会话都设上限，避免一个失控或
+# 恶意的客户端把内存与“累计参与”数字刷爆。事件批量上限远高于正常客户端
+# （一批通常 < 50 条），长离线后补报也不会被截断。
+MAX_BODY_BYTES = 256 * 1024
+MAX_EVENTS_PER_BATCH = 1000
+MAX_LIVE_SESSIONS = 200
+
 # 大屏推送：200ms 节流合并（§19.2）
 SUBSCRIBERS = []
 SUB_LOCK = threading.Lock()
@@ -85,6 +92,13 @@ def _password_matches(candidate):
         return False
     digest = hashlib.sha256(candidate.encode("utf-8")).digest()
     return hmac.compare_digest(digest, _ADMIN_PASSWORD_DIGEST)
+
+
+# 登录失败限速：不记录来源（与“不采集 IP”的承诺一致），用全局滑动窗口。
+# 现场只有一个后台终端，全局窗口足以挡住暴力尝试；成功登录即清零。
+ADMIN_FAIL_WINDOW_S = 300
+ADMIN_FAIL_LIMIT = 10
+_admin_failed_logins = []
 
 
 def _new_admin_session():
@@ -289,6 +303,12 @@ def result_payload(s):
     }
     p["bubble_demo"] = bubble_demo(s)
     p["feedback"] = s.feedback
+    # 轴标签以 taxonomy 为单一事实来源随结果下发；前端只作渲染兜底，
+    # 避免事件库改轴后结果页还停留在手抄的旧文案。
+    p["axes"] = {axis: {"axis_cn": engine.AXIS_CN[axis],
+                        "pro": engine.TRAIT_CN[engine.POLE_NAME[axis][0]],
+                        "con": engine.TRAIT_CN[engine.POLE_NAME[axis][1]]}
+                 for axis in engine.AXES}
     # 只有完整结果已成功拼装后才标记完成；若中途出现内容数据异常，手机端还能
     # 通过「再生成一次」重试，而不会把半成品提前标记为已完成。
     s.finished = True
@@ -360,6 +380,9 @@ def remember_feedback(s, value):
 class Handler(BaseHTTPRequestHandler):
     server_version = "FeedKnowsYou/1.0"
     protocol_version = "HTTP/1.1"
+    # 读写都走 socket 超时：半开的大屏 SSE 连接不会把线程永久挂在
+    # write 上；SSE 每 15s 有 ping，正常连接远碰不到这个上限。
+    timeout = 120
 
     def log_message(self, fmt, *args):        # §6.3 服务器日志不记录 IP 与设备信息
         pass
@@ -407,6 +430,11 @@ class Handler(BaseHTTPRequestHandler):
             return {}
         if not n:
             return {}
+        if n > MAX_BODY_BYTES:
+            # 不读入超大 body；标记关闭连接，避免 keep-alive 把未读的
+            # 剩余字节解析成下一个请求。
+            self.close_connection = True
+            return None
         raw = self.rfile.read(n).decode("utf-8", errors="replace")
         try:
             return json.loads(raw)
@@ -440,8 +468,18 @@ class Handler(BaseHTTPRequestHandler):
         return False
 
     def _admin_login(self, body):
+        with ADMIN_SESSION_LOCK:
+            now = time.time()
+            while _admin_failed_logins and now - _admin_failed_logins[0] > ADMIN_FAIL_WINDOW_S:
+                _admin_failed_logins.pop(0)
+            if len(_admin_failed_logins) >= ADMIN_FAIL_LIMIT:
+                return self._json({"error": "too_many_attempts"}, 429)
         if not isinstance(body, dict) or not _password_matches(body.get("password")):
+            with ADMIN_SESSION_LOCK:
+                _admin_failed_logins.append(time.time())
             return self._json({"error": "invalid_credentials"}, 401)
+        with ADMIN_SESSION_LOCK:
+            _admin_failed_logins.clear()
         token = _new_admin_session()
         return self._json({"ok": True, "authenticated": True}, headers={
             "Set-Cookie": _admin_cookie(token, ADMIN_SESSION_TTL),
@@ -508,8 +546,9 @@ class Handler(BaseHTTPRequestHandler):
                     if mode == "refresh":
                         cards = FEEDER.build_refresh(s, anchor_id=anchor_id,
                                                      anchor_seq=anchor_seq)
-                        # 刷新是当前页面的一次换批，不应让客户端误以为多完成了一屏。
-                        screen_index = max(0, s.screen_index - 1)
+                        # 刷新不推进屏序：返回当前屏号，让 payload 与大屏/
+                        # 画像里的 screen_index 保持同一个语义。
+                        screen_index = s.screen_index
                     else:
                         cards = FEEDER.build_screen(s, anchor_id=anchor_id,
                                                     anchor_seq=anchor_seq)
@@ -652,6 +691,8 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         q = parse_qs(u.query)
         body = self._body()
+        if body is None:
+            return self._json({"error": "payload_too_large"}, 413)
         if not isinstance(body, dict):
             body = {}
         p = u.path
@@ -678,6 +719,9 @@ class Handler(BaseHTTPRequestHandler):
                     return self._json({"error": "invalid_request"}, 400)
             show_on_screen = _parse_bool(body.get("show_on_screen"), True)
             s = STORE.create(None, show_on_screen, request_id=request_id)
+            if s is None:
+                # 并发会话已达上限；体验不可用，但不算客户端错误。
+                return self._json({"error": "session_limit"}, 503)
             broadcast()
             return self._json({"session_id": s.sid, "codename": s.codename,
                                "show_on_screen": s.show_on_screen})
@@ -689,6 +733,8 @@ class Handler(BaseHTTPRequestHandler):
             events = body.get("events", [])
             if not isinstance(events, list):
                 events = []
+            elif len(events) > MAX_EVENTS_PER_BATCH:
+                events = events[:MAX_EVENTS_PER_BATCH]
             with s.lock:
                 if s.deleted:
                     return self._json({"error": "session_gone"}, 404)

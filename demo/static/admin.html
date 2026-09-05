@@ -183,12 +183,16 @@ loginForm.addEventListener("submit", async e=>{
       body:JSON.stringify({password:passwordInput.value})
     });
     const d = await r.json().catch(()=>({}));
-    if(!r.ok || !d || d.ok !== true) throw new Error(d.error||"login_failed");
+    if(!r.ok || !d || d.ok !== true){
+      const err = new Error(d.error||("http_"+r.status));
+      err.code = d.error || ("http_"+r.status); err.status = r.status; throw err;
+    }
     passwordInput.value = "";
     setAuthenticated(true);
     await load();
   }catch(e){
-    loginError.textContent = (e.code === "network" || e.message === "network" || e instanceof TypeError)
+    loginError.textContent = e.status === 429 ? "尝试过于频繁，请稍后再试"
+      : (e.code === "network" || e.message === "network" || e instanceof TypeError)
       ? "暂时无法连接后台，请稍后重试" : "密钥不正确，请重新输入";
     setAuthenticated(false);
   }finally{

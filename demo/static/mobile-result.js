@@ -5,6 +5,17 @@
 const AXIS_POLES = { price: ["价格敏感", "品质优先"], depth: ["深度阅读", "快速浏览"], novelty: ["乐于尝鲜", "偏好稳妥"],
   expertise: ["专业向", "大众向"], decision: ["决策果断", "反复对比"] };
 const AXIS_CN = { price: "价格取向", depth: "阅读深度", novelty: "尝鲜程度", expertise: "专业程度", decision: "决策方式" };
+/* 服务端随结果下发的 taxonomy 轴标签（p.axes）；硬编码表只作离线兜底。 */
+let AXES_PAYLOAD = null;
+const axisLabels = axis => {
+  const a = AXES_PAYLOAD && !Array.isArray(AXES_PAYLOAD) ? AXES_PAYLOAD[axis] : null;
+  if (a && typeof a === "object") {
+    const pro = String(a.pro == null ? "" : a.pro).trim();
+    const con = String(a.con == null ? "" : a.con).trim();
+    if (pro && con) return [pro, con];
+  }
+  return AXIS_POLES[axis] || ["", ""];
+};
 const NEVER = [["姓名", "id-card"], ["手机号", "smartphone"], ["学号", "graduation-cap"], ["位置", "map-pin"], ["任何一个字", "keyboard"]];
 const MIS_ICON = ["timer", "mouse-pointer-click", "users"];
 const ACT_ICON = ["sliders-horizontal", "trash-2", "shield"];
@@ -259,13 +270,13 @@ function dimBlock(label, v, ev, tagText, isTop) {
 }
 function axisBlock(axis, v, ev, isTop) {
   v = v || {}; ev = Array.isArray(ev) ? ev.filter(Boolean) : [];
-  const [pro, con] = AXIS_POLES[axis] || ["", ""];
+  const [pro, con] = axisLabels(axis);
   const value = Number.isFinite(Number(v.value)) ? Math.max(0, Math.min(1, Number(v.value))) : .5;
   const decided = !!v.pole, strength = Math.abs(value - .5) * 2;
   const weak = Number(v.conf) < 1;
   const n = Number.isFinite(Number(v.n)) ? Number(v.n) : 0;
   return '<div class="axis' + (isTop ? " top" : "") + (decided ? "" : " none") + '" ' + (decided ? 'data-toggle role="button" tabindex="0" aria-expanded="false"' : "") + ">" +
-    '<div class="h"><b>' + (decided ? esc(v.pole_cn) : "未形成判断") + "</b><u>" + esc(AXIS_CN[axis] || v.axis_cn) + "</u>" +
+    '<div class="h"><b>' + (decided ? esc(v.pole_cn) : "未形成判断") + "</b><u>" + esc(v.axis_cn || AXIS_CN[axis] || axis) + "</u>" +
     "<i>" + (decided ? pct(strength) : "—") + "</i></div>" +
     '<div class="tr"><div class="ln"></div><div class="mid"></div><div class="mk' + (weak ? " soft" : "") + '" style="left:' + pct(value) + '"></div></div>' +
     '<div class="pl"><span class="' + (decided && value < .5 ? "w" : "") + '">' + con + '</span><span class="' + (decided && value > .5 ? "w" : "") + '">' + pro + "</span></div>" +
@@ -282,6 +293,7 @@ function renderResult(p) {
   p.click_count = wholeNumber(p.click_count);
   p.impression_count = wholeNumber(p.impression_count);
   p.event_count = wholeNumber(p.event_count);
+  AXES_PAYLOAD = p.axes && typeof p.axes === "object" && !Array.isArray(p.axes) ? p.axes : null;
   p.domains = normalizeMetricMap(p.domains);
   p.sub_tags = normalizeMetricMap(p.sub_tags);
   p.traits = normalizeMetricMap(p.traits, true);

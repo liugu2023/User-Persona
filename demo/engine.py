@@ -630,7 +630,7 @@ def dwell_weight(dwell_ms, scroll_depth, body_len):
     """§8.4 停留权重 + scroll_depth 有效性校验（短文不校验）"""
     dwell_ms = max(0.0, min(_finite_number(dwell_ms, 0), DWELL_CAP_MS))
     scroll_depth = max(0.0, min(_finite_number(scroll_depth, 0), 1.0))
-    if dwell_ms >= 15000:
+    if dwell_ms >= DWELL_CAP_MS:
         if body_len == "S":
             return 1.0
         return 1.0 if scroll_depth >= 0.6 else 0.7
@@ -800,7 +800,10 @@ class Session:
             prev = self.applied_w.get(cid, 0.0)
             if abs(w) <= abs(prev):
                 return True
-            delta_w = w - prev
+            # 负信号（快速划过）不进兴趣分（§8.8），只进特质轴的对立极；
+            # 因此它随后被更强正信号覆盖时，补差值不应把从未入账的负权重
+            # “补回”给兴趣分（否则先划过再点开 = 0.5 + 0.15）。
+            delta_w = w - max(prev, 0.0) if w > 0 else w - prev
             self.applied_w[cid] = w
 
         factor = delta_w * position_factor(props.get("position", 0))
@@ -1029,9 +1032,10 @@ class Session:
         for axis in AXES:
             pro, con = self.trait[axis]["pro"], self.trait[axis]["con"]
             value = (1.0 + pro) / (2.0 + pro + con)      # Beta 后验均值，α=β=1
+            # 消歧卡按 1 条证据计（其更强的选择权重已体现在 contribution 里），
+            # 不再额外 +1，否则一条卡片就能把 conf 抬到 2/3。
             n = len(self.trait_evidence[axis])
-            has_card = any(str(k).startswith("card_") for k in self.trait_evidence[axis])
-            conf = min(1.0, (n + (1 if has_card else 0)) / CONF_N)
+            conf = min(1.0, n / CONF_N)
             if value > NEUTRAL_HI:
                 pole = POLE_NAME[axis][0]
             elif value < NEUTRAL_LO:
@@ -1103,6 +1107,10 @@ class Session:
     # ------------------------------------------------ 画像输出（§8.7）
 
     def profile(self):
+        # hot 只在正信号到来时衰减；大屏每 200ms 拉一次画像，这里补一次
+        # 惰性衰减，让“当前热度”在观众停止点击后也会实时冷下来。
+        with self.lock:
+            self._decay_hot()
         domains = self.domain_scores()
         traits = self.trait_scores()
         top_d, top_s, _ = self.top_domain()
@@ -1788,8 +1796,11 @@ class SessionStore:
     内存中存在并按 ``SESSION_TTL`` 清理。
     """
 
-    def __init__(self, lib, metrics_path=None):
+    def __init__(self, lib, metrics_path=None, max_sessions=200):
         self.lib = lib
+        # 并发会话上限：现场服务没有按请求方限流的手段（也不记录 IP），
+        # 用总量上限兜底，防止脚本刷会话把内存与大屏“累计参与”数字刷爆。
+        self.max_sessions = max(1, int(max_sessions))
         self.sessions = {}
         # 创建请求键只在会话存活期间保存在内存，用来把响应丢失后的重试
         # 合并回原会话；不会写入长期指标文件，也不会进入任何 API 响应。
@@ -1896,6 +1907,8 @@ class SessionStore:
                 if existing is not None:
                     return existing
                 self.create_request_cache.pop(request_id, None)
+            if len(self.sessions) >= self.max_sessions:
+                return None
             # 未指定时按组轮换首屏探针；现场连续场次不会永远拿到同一
             # 组八张卡。显式传入合法组名仍可供后台/离线仿真复现实验。
             if not isinstance(probe_group, str) or probe_group not in PROBE_GROUPS:

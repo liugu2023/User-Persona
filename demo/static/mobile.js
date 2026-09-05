@@ -451,7 +451,11 @@ async function start() {
     if (createRequestId === requestIdAtStart) createRequestId = null;
   } catch (e) {
     gb.disabled = false; gtxt.textContent = "我知道了，开始体验";
-    showPageState("connection", "暂时无法开始", "请检查网络后重试。", "重试", start, "wifi-off");
+    if (e.code === "session_limit") {
+      showPageState("content", "暂时无法开始", "现场参与人数已达上限，请稍后再试。", "重试", start, "triangle-alert");
+    } else {
+      showPageState("connection", "暂时无法开始", "请检查网络后重试。", "重试", start, "wifi-off");
+    }
   }
 }
 
