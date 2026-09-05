@@ -884,6 +884,13 @@ def lan_ip():
         return "127.0.0.1"
 
 
+class FeedServer(ThreadingHTTPServer):
+    # socketserver 默认 backlog=5：现场"全员同时扫码"的建连风暴会被直接
+    # 拒绝（实测 200 个并发新建连接约一半 ConnectionRefused）。调大等待队列。
+    request_queue_size = 128
+    daemon_threads = True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--host", default="0.0.0.0")
@@ -891,7 +898,7 @@ def main():
     args = ap.parse_args()
 
     threading.Thread(target=pusher, daemon=True).start()
-    srv = ThreadingHTTPServer((args.host, args.port), Handler)
+    srv = FeedServer((args.host, args.port), Handler)
     ip = lan_ip()
     print("《信息流知道你》Demo 已启动 —— 断网可跑")
     print("  内容库：兴趣+探针 %d 条，模拟广告 %d 条，成对探针 %d 组"
