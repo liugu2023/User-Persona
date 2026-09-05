@@ -640,14 +640,16 @@ body:not(.modal-lock) .page-state:not(.on){display:none!important;}
 .cta:disabled{color:rgba(255,255,255,.72)}
 .sw{background:#c9d3e2}
 
-/* 结束卡：信息流收尾的深色锚点，明确"体验到此结束" */
-.endcard{background:#182642;color:#f3f5f9;box-shadow:0 16px 38px -20px rgba(24,38,66,.50)}
-.endcard::before{border-color:rgba(255,255,255,.14)}
-.endcard::after{border-color:rgba(255,255,255,.22)}
-.endcard .k{color:#8fb4ee}
-.endcard p{color:#c5cddb}
-.endcard .again{color:#8ea0bd}
-.endcard .again:active{background:rgba(255,255,255,.08)}
+/* 结束卡：信息流收尾的"仪式位"。浅蓝渐变与纸世界同族，避免整片浅色
+   信息流里突兀插进一块深色；醒目感靠蓝边框、蓝字和投影建立 */
+.endcard{background:linear-gradient(165deg,#e8f0fb 0%,#f7f9fe 70%);color:var(--pfg);
+  border:1px solid rgba(30,77,153,.18);box-shadow:0 14px 34px -22px rgba(30,77,153,.38)}
+.endcard::before{border-color:rgba(30,77,153,.14)}
+.endcard::after{border-color:rgba(30,77,153,.24)}
+.endcard .k{color:var(--ysu)}
+.endcard p{color:var(--psub)}
+.endcard .again{color:var(--psub)}
+.endcard .again:active{background:rgba(30,77,153,.08)}
 
 /* 结果页：白卡浮在纸灰底上，投影极轻 */
 .pnl,.fb,.cross .ev3,.bub .ph,.mis div,.act,.gone .box,.rbtn{
