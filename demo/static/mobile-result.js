@@ -214,9 +214,16 @@ function drawOrbit(cv, order, dmap, t) {
     if (weak) { g.beginPath(); g.arc(p.x, p.y, 8 + 7 * p.s, 0, 7); g.setLineDash([2, 3]); g.strokeStyle = "rgba(" + PAL.goldRGB + ",.7)"; g.lineWidth = 1; g.stroke(); g.setLineDash([]); }
   });
   order.forEach((d, i) => {
-    const a = ang(i), lx = cx + Math.cos(a) * (R + 22), ly = cy + Math.sin(a) * (R + 18), v = dmap[d.domain];
-    g.textAlign = Math.abs(Math.cos(a)) < .3 ? "center" : (Math.cos(a) > 0 ? "left" : "right"); g.textBaseline = "middle";
+    const a = ang(i); let lx = cx + Math.cos(a) * (R + 22); let ly = cy + Math.sin(a) * (R + 18); const v = dmap[d.domain];
+    const align = Math.abs(Math.cos(a)) < .3 ? "center" : (Math.cos(a) > 0 ? "left" : "right");
+    g.textAlign = align; g.textBaseline = "middle";
+    /* 手机上画布窄，左右两角的板块名会被 canvas 边界裁掉（“学习考试”变“考试”）；
+       按文字实际宽度把标签钳回画布内。 */
     g.font = "600 12px " + getComputedStyle(document.body).getPropertyValue("--sans"); g.fillStyle = v ? PAL.fg2 : PAL.mute;
+    const nameW = g.measureText(d.domain_cn).width;
+    if (align === "left") lx = Math.min(lx, W - nameW - 2);
+    else if (align === "right") lx = Math.max(lx, nameW + 2);
+    ly = Math.max(9, Math.min(H - 20, ly));
     g.fillText(d.domain_cn, lx, ly - (v ? 7 : 0));
     if (v) { g.font = "700 12px " + getComputedStyle(document.body).getPropertyValue("--mono"); g.fillStyle = v.conf < 1 ? PAL.gold : PAL.ac; g.fillText(pct(v.score * t), lx, ly + 8); }
   });
