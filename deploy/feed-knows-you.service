@@ -1,0 +1,38 @@
+# 《信息流知道你》systemd 服务单元
+# 用法：复制到 /etc/systemd/system/feed-knows-you.service 后
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now feed-knows-you
+# 管理启停：sudo systemctl start|stop|restart|status feed-knows-you
+#
+# 部署路径按下方 /opt/feed-knows-you 写死；换目录请同步修改
+# WorkingDirectory 与两行日志路径（日志即落在 WorkingDirectory 下）。
+# 管理员密钥等敏感配置放 /etc/feed-knows-you.env（chmod 600），不要写进本文件。
+
+[Unit]
+Description=信息流知道你 —— 网络安全宣传周互动体验服务
+Documentation=https://example.local/see/docs
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/feed-knows-you/demo
+# 零第三方依赖，系统 python3 即可运行
+ExecStart=/usr/bin/python3 /opt/feed-knows-you/demo/server.py --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=3
+# 环境变量：/etc/feed-knows-you.env 中可配置
+#   YUNA_ADMIN_PASSWORD=现场管理员密钥
+#   YUNA_METRICS_PATH=/opt/feed-knows-you/demo/aggregate_metrics.json
+EnvironmentFile=-/etc/feed-knows-you.env
+# 日志直接写入 WorkingDirectory（./）下；进程不打印访问日志（隐私设计），
+# 这里只会记录启动信息和异常堆栈
+StandardOutput=append:/opt/feed-knows-you/demo/server.log
+StandardError=append:/opt/feed-knows-you/demo/server.err.log
+# 加固：只保留工程目录的写权限
+ReadOnlyPaths=/opt/feed-knows-you/事件库
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
