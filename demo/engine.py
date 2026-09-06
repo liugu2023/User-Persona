@@ -56,8 +56,10 @@ AGGREGATE_METRIC_KEYS = (
     "participants_total",       # 创建过的全部体验人数（含不上大屏者）
     "feedback_accurate",         # 最终选择“准”的会话数
     "feedback_inaccurate",       # 最终选择“不准”的会话数
+    "verify_profile_hits",       # 结果页画像验证：选中按画像生成的一组
+    "verify_profile_miss",       # 结果页画像验证：选了对照组
 )
-AGGREGATE_METRICS_VERSION = 2
+AGGREGATE_METRICS_VERSION = 3
 
 
 class AggregateMetricsStore:
@@ -694,6 +696,8 @@ class Session:
         self.pending_card = None
         self.finished = False
         self.deleted = False
+        self.verify_choice = None               # 结果页画像验证的选择（a=画像组/b=对照组）
+        self.verify_recorded = False            # 每场只记第一次选择
         self.show_on_screen = True
         self.feedback = None
         self._create_request_id = None    # 仅供 SessionStore 的内存幂等映射
@@ -764,6 +768,18 @@ class Session:
                     hook(self, old_feedback, value)
                 return True
             return False
+
+        if etype == "verify_choice":
+            # 结果页画像验证的选择：a=按画像生成的一组，b=对照组。
+            # 只记第一次选择，后续点击不再改写；只落两个匿名计数。
+            choice = props.get("choice")
+            if choice in ("a", "b") and not self.verify_recorded:
+                self.verify_choice = choice
+                self.verify_recorded = True
+                hook = getattr(self, "_verify_hook", None)
+                if hook is not None:
+                    hook(self, choice)
+            return True
 
         cid = ev.get("content_id")
         content = self.lib.contents.get(cid)
@@ -1831,6 +1847,10 @@ class SessionStore:
             "accurate": loaded.get("feedback_accurate", 0),
             "inaccurate": loaded.get("feedback_inaccurate", 0),
         })
+        self.verify_counts = defaultdict(int, {
+            "a": loaded.get("verify_profile_hits", 0),
+            "b": loaded.get("verify_profile_miss", 0),
+        })
         self.total_started = loaded.get("participants_total", 0)
         self.metrics_write_ok = bool(self.metrics_store.last_write_ok)
 
@@ -1842,6 +1862,8 @@ class SessionStore:
             "participants_total": max(0, int(self.total_started)),
             "feedback_accurate": max(0, int(self.feedback_counts.get("accurate", 0))),
             "feedback_inaccurate": max(0, int(self.feedback_counts.get("inaccurate", 0))),
+            "verify_profile_hits": max(0, int(self.verify_counts.get("a", 0))),
+            "verify_profile_miss": max(0, int(self.verify_counts.get("b", 0))),
         }
 
     def _persist_metrics_unlocked(self):
@@ -1869,9 +1891,18 @@ class SessionStore:
             # 这里的“准确率”是观众对结果点“准”的匿名认可率，不宣称
             # 行为画像存在客观真值；无反馈时用 null 而不是误导性的 0%。
             "accuracy_rate": self._ratio(raw["feedback_accurate"], feedback_total),
+            "verify_total": raw["verify_profile_hits"] + raw["verify_profile_miss"],
+            "verify_hit_rate": self._ratio(raw["verify_profile_hits"],
+                                           raw["verify_profile_hits"] + raw["verify_profile_miss"]),
             "persistence_enabled": enabled,
             "persistence_healthy": write_ok if enabled else True,
         }
+
+    def _verify_transition(self, s, choice):
+        """结果页画像验证的选择落账：只收 a/b 两个匿名枚举值。"""
+        with self.lock:
+            self.verify_counts[choice] = self.verify_counts.get(choice, 0) + 1
+            self._persist_metrics_unlocked()
 
     def _feedback_transition(self, s, old, new):
         """接收 ``profile_feedback`` 事件造成的反馈变化。
@@ -1931,6 +1962,7 @@ class SessionStore:
             s = Session(self.lib, probe_group)
             s.show_on_screen = _safe_bool(show_on_screen, True)
             s._feedback_hook = self._feedback_transition
+            s._verify_hook = self._verify_transition
             s._create_request_id = request_id
             self.sessions[s.sid] = s
             if request_id:

@@ -665,3 +665,23 @@ body:not(.modal-lock) .page-state:not(.on){display:none!important;}
 #shareOverlay img{width:min(66vw,300px);border-radius:16px;box-shadow:0 24px 70px rgba(5,12,24,.5)}
 #shareOverlay p{margin:0;color:#fff;font-size:14px;text-align:center;line-height:1.7}
 #shareOverlay button{min-width:120px;min-height:44px;border-radius:12px;background:var(--ac-btn);color:#fff;font-size:15px;font-weight:600}
+
+/* 画像体验增强：命中角标 / 关键词条 / 验证二选一 / 逐特质裁判 */
+.guess-tag{color:var(--ysu-ink);border:1px solid rgba(30,77,153,.30);border-radius:4px;padding:1px 5px;font-size:10px;font-weight:600}
+.keys{margin-top:14px;font-weight:800;font-size:clamp(20px,6vw,30px);color:var(--ac);letter-spacing:.02em}
+.tfb{display:flex;align-items:center;gap:8px;margin-top:8px}
+.tfb span{font-size:11px;color:var(--mute);margin-right:auto}
+.tfb button{min-width:44px;min-height:30px;border-radius:8px;border:1px solid var(--pline);background:var(--paper);color:var(--fg-2);font-size:12px;font-weight:600}
+.axis.mark-bad{opacity:.45}
+.axis.mark-bad .tfb button[data-mark="bad"]{border-color:var(--danger);color:var(--danger)}
+.axis.mark-good .tfb button[data-mark="good"]{border-color:var(--green);color:var(--green)}
+.verify{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vcol{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;transition:opacity .3s ease,border-color .3s ease}
+.vcol.picked{border-color:var(--ac);box-shadow:var(--sh-focus)}
+.vcol.other{opacity:.45}
+.vcol .vh{font-weight:700;font-size:13px;color:var(--ac)}
+.vi{background:var(--ink-3);border-radius:9px;padding:8px 9px}
+.vi b{display:block;font-size:12.5px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vi span{font-size:10.5px;color:var(--mute)}
+.vpick{margin-top:auto;min-height:40px;border-radius:10px;background:var(--ac-btn);color:#fff;font-size:13px;font-weight:600}
+.vpick:disabled{opacity:.5}

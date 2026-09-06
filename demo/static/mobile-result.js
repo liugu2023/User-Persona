@@ -282,14 +282,15 @@ function axisBlock(axis, v, ev, isTop) {
   const decided = !!v.pole, strength = Math.abs(value - .5) * 2;
   const weak = Number(v.conf) < 1;
   const n = Number.isFinite(Number(v.n)) ? Number(v.n) : 0;
-  return '<div class="axis' + (isTop ? " top" : "") + (decided ? "" : " none") + '" ' + (decided ? 'data-toggle role="button" tabindex="0" aria-expanded="false"' : "") + ">" +
+  return '<div class="axis' + (isTop ? " top" : "") + (decided ? "" : " none") + '" ' + (decided ? 'data-axis="' + axis + '" data-toggle role="button" tabindex="0" aria-expanded="false"' : "") + ">" +
     '<div class="h"><b>' + (decided ? esc(v.pole_cn) : "未形成判断") + "</b><u>" + esc(v.axis_cn || AXIS_CN[axis] || axis) + "</u>" +
     "<i>" + (decided ? pct(strength) : "—") + "</i></div>" +
     '<div class="tr"><div class="ln"></div><div class="mid"></div><div class="mk' + (weak ? " soft" : "") + '" style="left:' + pct(value) + '"></div></div>' +
     '<div class="pl"><span class="' + (decided && value < .5 ? "w" : "") + '">' + con + '</span><span class="' + (decided && value > .5 ? "w" : "") + '">' + pro + "</span></div>" +
-    '<div class="n">' + (decided ? "基于 " + n + " 条内容" + (v.cross_domain ? " · 来自 3 个以上板块" : "") + (weak ? " · 证据不足" : "") : "证据不足，不展示判断 · " + n + " 条内容") +
-    (decided ? '<span class="go">证据' + I("chevron-down", 14) + "</span>" : "") + "</div>" +
-    (decided ? '<div class="ev">' + ev.map(e => evRow(e)).join("") + "</div>" : "") + "</div>";
+      '<div class="n">' + (decided ? "基于 " + n + " 条内容" + (v.cross_domain ? " · 来自 3 个以上板块" : "") + (weak ? " · 证据不足" : "") : "证据不足，不展示判断 · " + n + " 条内容") +
+      (decided ? '<span class="go">证据' + I("chevron-down", 14) + "</span>" : "") + "</div>" +
+      (decided ? '<div class="tfb"><span>这条判断准吗？</span><button type="button" data-mark="good">准</button><button type="button" data-mark="bad">不准</button></div>' : "") +
+      (decided ? '<div class="ev">' + ev.map(e => evRow(e)).join("") + "</div>" : "") + "</div>";
 }
 
 function renderResult(p) {
@@ -388,10 +389,34 @@ function renderResult(p) {
       : '<span class="l1 only">' + esc(persona[0]) + "</span>") + "</h1>" +
     '<p class="sum">' + esc(p.summary) + "</p>" +
     '<span class="tag">' + I("scan-line", 13) + "基于本次浏览的判断</span>" +
+    (Object.values(p.sub_tags).filter(v => v.n_evidence >= 2).length
+      ? '<div class="keys">' + Object.entries(p.sub_tags).filter(([, v]) => v.n_evidence >= 2)
+          .slice(0, 3).map(([, v]) => esc(v.cn)).join(" · ") + "</div>"
+      : "") +
+    (p.feed_match
+      ? '<p class="note" style="margin-top:12px">本次你看到的 ' + p.feed_match.total + ' 条内容里，有 <b>' + p.feed_match.hit +
+        '</b> 条来自你点击最多的「' + esc(p.feed_match.top_cn) + '」——回想一下，是不是这样。</p>'
+      : "") +
     '<div class="kpi"><div><b>' + p.click_count + "</b><span>" + I("mouse-pointer-click", 11) + "次点击</span></div>" +
     "<div><b>" + p.impression_count + "</b><span>" + I("eye", 11) + "条看过</span></div>" +
     "<div><b>" + p.event_count + "</b><span>" + I("activity", 11) + "次浏览动作</span></div>" +
     '<div class="z"><b>0</b><span>' + I("keyboard", 11) + "字输入</span></div></div></header>";
+
+  /* 画像验证二选一：A 组按本场画像排序，B 组来自评分最低的板块。
+     用户亲手证实或证伪，选择经 verify_choice 事件匿名落账。 */
+  if (p.verify && Array.isArray(p.verify.a) && p.verify.a.length >= 4 &&
+      Array.isArray(p.verify.b) && p.verify.b.length >= 4) {
+    const order = Math.random() < 0.5
+      ? [["a", p.verify.a], ["b", p.verify.b]]
+      : [["b", p.verify.b], ["a", p.verify.a]];
+    h += '<section class="blk" data-reveal id="blkVerify"><div class="bh"><span class="no">' + num() +
+      '</span><h2>动手验证：哪一组更像你会点开的？</h2></div><div class="verify">' +
+      order.map(([k, list]) =>
+        '<div class="vcol" data-verify="' + k + '"><div class="vh">' + (k === "a" ? "A 组" : "B 组") + '</div>' +
+        list.slice(0, 4).map(x => '<div class="vi"><b>' + esc(x.title) + '</b><span>' + esc(x.domain_cn) + "</span></div>").join("") +
+        '<button type="button" class="vpick" data-choice="' + k + '">我选这组</button></div>').join("") +
+      '</div><div class="note" id="verifyMsg" aria-live="polite"></div></section>';
+  }
 
   /* 准 / 不准 */
   h += '<section class="blk" data-reveal><div class="fb"><div class="q">这份侧写接近你刚才的浏览吗？</div>' +
@@ -501,6 +526,35 @@ function renderResult(p) {
     el.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); toggle(ev); } });
   });
   body.querySelectorAll(".blk[data-reveal]").forEach(el => REV.observe(el));
+  /* 逐特质裁判：当场标记，标“不准”的判断整块变灰 */
+  body.querySelectorAll(".axis[data-axis]").forEach(el => {
+    el.querySelectorAll(".tfb button").forEach(b => b.addEventListener("click", ev => {
+      ev.stopPropagation();
+      const mark = b.dataset.mark;
+      const on = el.classList.contains("mark-" + mark);
+      el.classList.remove("mark-good", "mark-bad");
+      if (!on) el.classList.add("mark-" + mark);
+    }));
+  });
+  /* 画像验证：选择后锁定并匿名上报（只记每场第一次） */
+  const verifySec = document.getElementById("blkVerify");
+  if (verifySec) {
+    verifySec.querySelectorAll(".vpick").forEach(btn => btn.addEventListener("click", ev => {
+      ev.stopPropagation();
+      const choice = btn.dataset.choice;
+      verifySec.querySelectorAll(".vcol").forEach(col => {
+        col.classList.toggle("picked", col.dataset.verify === choice);
+        col.classList.toggle("other", col.dataset.verify !== choice);
+      });
+      const msg = document.getElementById("verifyMsg");
+      if (msg) msg.textContent = choice === "a"
+        ? "你选的这组，就是按你的行为排出来的。命中不是巧合，是你自己的点击投的票。"
+        : "你选了另一组——这组没猜中你。画像只是行为的影子，欢迎用「不准」继续纠正它。";
+      verifySec.querySelectorAll(".vpick").forEach(b => { b.disabled = true; });
+      emit("verify_choice", null, { choice });
+      flush();
+    }));
+  }
   const bo = document.getElementById("blkOrbit");
   if (bo) bo.addEventListener("reveal", () => {
     const cv = document.getElementById("cvOrbit");
@@ -669,6 +723,13 @@ function shareCard(p) {
     g.fillStyle = i ? PAL.fg2 : PAL.ac; g.fillRect(220, yy - 14, 400 * v.score, 6);
     g.fillStyle = PAL.fg; g.font = "700 24px " + mono; g.textAlign = "right"; g.fillText(pct(v.score), 690, yy); g.textAlign = "left";
   });
+  const evGroups = p.domain_evidence && typeof p.domain_evidence === "object" && !Array.isArray(p.domain_evidence)
+    ? Object.values(p.domain_evidence) : [];
+  const evFirst = evGroups.length && Array.isArray(evGroups[0]) ? evGroups[0][0] : null;
+  if (evFirst && evFirst.title) {
+    g.fillStyle = PAL.fg2; g.font = "24px " + sans;
+    wrapText(g, "证据之一：《" + evFirst.title + "》 · " + (evFirst.action || "点击"), 60, 1198, 630, 32);
+  }
   g.fillStyle = "rgba(22,35,58,.12)"; g.fillRect(60, 1040, 630, 1);
   g.fillStyle = PAL.fg; g.font = "600 38px " + serif;
   wrapText(g, "数据画像不是你本人，只是算法眼中的你。", 60, 1112, 630, 54);

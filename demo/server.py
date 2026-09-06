@@ -312,6 +312,36 @@ def result_payload(s):
     }
     p["bubble_demo"] = bubble_demo(s)
     p["feedback"] = s.feedback
+    # 命中率可见化：看到的全部内容里，落在点击最多板块的占比
+    top_d = p.get("top_domain")
+    total_imp = sum(s.impression_domains.values())
+    hit_imp = s.impression_domains.get(top_d, 0) if top_d else 0
+    if total_imp >= 10:
+        p["feed_match"] = {"total": total_imp, "hit": hit_imp,
+                           "top_cn": engine.DOMAIN_CN.get(top_d, "")}
+    # 画像验证二选一：A 组按本场画像排序，B 组来自评分最低的三个板块。
+    # 让用户亲手“证实”或“证伪”画像，选择经 verify_choice 事件匿名落账。
+    if top_d:
+        ranked = sorted(LIB.feed_pool, key=lambda c: -FEEDER._interest_score(c, s))
+        a_ids = [c["content_id"] for c in ranked[:6]]
+        a_set = set(a_ids)
+        low_doms = sorted((d for d in engine.DOMAIN_CN if d != top_d),
+                          key=lambda d: s.score(d))[:3]
+        low = sorted((c for c in LIB.feed_pool
+                      if c["domain"] in low_doms and c["content_id"] not in a_set),
+                     key=lambda c: c["content_id"])[:6]
+
+        def slim(ids):
+            out = []
+            for cid in ids:
+                c = LIB.contents.get(cid)
+                if c:
+                    out.append({"title": c["title"],
+                                "domain_cn": engine.DOMAIN_CN.get(c["domain"], "")})
+            return out
+
+        if len(low) >= 4:
+            p["verify"] = {"a": slim(a_ids), "b": slim([c["content_id"] for c in low])}
     # 轴标签以 taxonomy 为单一事实来源随结果下发；前端只作渲染兜底，
     # 避免事件库改轴后结果页还停留在手抄的旧文案。
     p["axes"] = {axis: {"axis_cn": engine.AXIS_CN[axis],
@@ -570,8 +600,12 @@ class Handler(BaseHTTPRequestHandler):
                     personalized_from = ({"content_id": anchor["content_id"],
                                           "title": anchor["title"]}
                                          if anchor else None)
+                    top_d = s.top_domain()[0] if s.raw else None
+                    cards_view = [LIB.card(c) for c in cards]
+                    for view, c in zip(cards_view, cards):
+                        view["guess"] = bool(top_d and c["domain"] == top_d)
                     payload = {"screen_index": screen_index,
-                               "cards": [LIB.card(c) for c in cards],
+                               "cards": cards_view,
                                "converged": s.converged(),
                                "personalized_from": personalized_from,
                                "refresh_count": s.refresh_count}
@@ -683,6 +717,8 @@ class Handler(BaseHTTPRequestHandler):
                 "converge_rate": round(converge_count / done_count, 3) if done_count else 0,
                 "feedback_count": aggregate["feedback_total"],
                 "feedback_good_rate": aggregate["accuracy_rate"],
+                "verify_total": aggregate["verify_total"],
+                "verify_hit_rate": aggregate["verify_hit_rate"],
                 "accuracy_rate": aggregate["accuracy_rate"],
                 "persistence_enabled": aggregate["persistence_enabled"],
                 "persistence_healthy": aggregate["persistence_healthy"],

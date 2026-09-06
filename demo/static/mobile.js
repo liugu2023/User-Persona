@@ -742,6 +742,7 @@ function renderCard(c, pos, screen, delay, source = "home", batchKind = "next") 
     cover +
     '<div class="ct"><h3>' + esc(c.title) + '</h3><p class="sm">' + esc(c.summary) + "</p>" +
     '<div class="mt"><span class="src">' + esc(publisher(c)) + '</span><span class="chip">' + esc(c.domain_cn) + "</span>" +
+    (c.guess ? '<span class="guess-tag">猜你喜欢</span>' : "") +
     "<span>" + (1 + hs % 59) + " 分钟前</span>" +
     '<span class="rd">' + I("eye", 12) + ((hs >>> 8) % 9 + 1) + "." + ((hs >>> 4) % 10) + " 万</span></div></div>" +
     '<span class="done">' + I("check", 12) + "</span>";
@@ -1209,6 +1210,10 @@ function closeReader() {
     const depth = (reader.scrollHeight <= reader.clientHeight) ? 1 : curMaxScroll;
     emit("content_dwell", curCid, { dwell_ms: dwell, scroll_depth: +depth.toFixed(2), position: curPos,
       screen_index: curInfo && curInfo.screen >= 0 ? curInfo.screen : null, feed: curInfo && curInfo.source || "home" });
+    /* 行为回声：把“系统看见了你的停留”实时讲出来，是画像准确感的地基 */
+    if (dwell >= 5000) {
+      pushNoti("book-open", "已记录：你在《" + (curInfo && curInfo.c ? curInfo.c.title : "一篇内容") + "》停留了 " + Math.round(dwell / 1000) + " 秒");
+    }
     readSet[curCid] = 1;
     document.querySelectorAll('[data-cid="' + curCid + '"]').forEach(el => el.classList.add("read"));
   }

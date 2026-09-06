@@ -242,7 +242,8 @@ async function loadOnce(){
     '<div><b>'+(d.online_avg_clicks==null?'—':n(d.online_avg_clicks))+'</b><span>在场平均点击</span></div>'+
     '<div><b>'+pct(d.converge_rate)+'</b><span>当前收敛率</span></div>'+
     '<div><b>'+count(d.participants)+'</b><span>累计参与</span></div>'+
-    '<div><b>'+pct(d.feedback_good_rate)+'</b><span>累计认为准</span></div>';
+    '<div><b>'+pct(d.feedback_good_rate)+'</b><span>累计认为准</span></div>'+
+    '<div><b>'+pct(d.verify_hit_rate)+'</b><span>画像验证命中</span></div>';
   document.getElementById("lib").textContent =
     "内容库 "+count(d.library.contents)+" 条 · 探针 "+count(d.library.probes)+" 条 · 广告 "+
     count(d.library.ads)+" 条 · 成对探针 "+count(d.library.pairs)+" 组 · κ="+n(d.kappa||2).toFixed(1);
